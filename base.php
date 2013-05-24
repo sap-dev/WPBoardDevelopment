@@ -1,8 +1,4 @@
 <?php
-	error_reporting(0);
-	use \Itschi\lib as lib;
-	session_start();
-
 	/**
 		* @author WPBoard
 		* @copyright 2013 WPBoard
@@ -10,6 +6,9 @@
 		* @category Core
 		* @file base.php
 	*/
+
+	use \Itschi\lib as lib;
+	session_start();
 
 	error_reporting(E_ALL & ~E_NOTICE);
 
