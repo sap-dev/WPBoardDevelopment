@@ -84,9 +84,7 @@
 					<?php template::displayArea('menuPlugin'); ?>
 					<li><a class="last"></a></li>
 				</ul>
-				<form action="search.php" method="GET">
-				<input type="text" name="query" class="searchinput">
-				</form>
+				<?=standard::languageChoiser(); ?>
 				<div class="clear"></div>
 			</nav>
 		</div>
