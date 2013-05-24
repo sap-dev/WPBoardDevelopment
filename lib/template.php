@@ -153,7 +153,6 @@
 		
 		public static function getLanguage($lang, $code) {
 			global $db, $config;
-			echo $row['lang_lang'];
 			$res = $db->query("
 				SELECT *
 				FROM " . LANGUAGE_TABLE . "
@@ -188,6 +187,7 @@
 		 *	@return string
 		 */
 
+		 
 		public static function getPage() {
 			return self::getVar('PAGE');
 		}
