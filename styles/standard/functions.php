@@ -1,7 +1,11 @@
 <?php
 	/**
-	 *
-	 */
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Core
+		* @file plugin.php
+	*/
 
 	abstract class standard {
 		public static function menu() {
@@ -34,6 +38,17 @@
 			}
 
 
+		}
+		public static function languageChoiser() {
+			global $db, $user;
+			$res2 = $db->query('SELECT * FROM board_languages');
+			$i = 0;
+			echo '<ul style="float: right;"><li>';
+			while ($row = $db->fetch_array($res2)) {
+				$i++;
+					echo '<a href="forum.php?lang='.$row['lang_code'].'" style="padding-right: 5px; margin-right: 5px; padding-left: 5px; margin-left: 5px; border-right: 0px;"><img border="0" src="'.$row['lang_icon'].'" style="vertical-align:middle;"></a>';
+			}
+			echo '</li></ul>';
 		}
 	}
 
