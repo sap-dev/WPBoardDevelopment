@@ -95,4 +95,32 @@
 	$token->check('GET', $_GET);
 
 	template::assign("menu",$_GET['menu']);
+	
+	if($user->row['user_lang'] AND $_GET['lang']) {
+		$config['selected_language'] = $_GET['lang'];
+		$_SESSION['lang'] = $_GET['lang'];
+	}	
+	if($user->row['user_lang']) {
+		if($_SESSION['lang']) {
+			$config['selected_language'] = $_SESSION['lang'];
+		} else {
+			$config['selected_language'] = $user->row['user_lang'];
+		}
+	} else {
+		if($_SESSION['lang']) {
+			if($_GET['lang']) {
+				$config['selected_language'] = $_GET['lang'];
+				$_SESSION['lang'] = $config['selected_language'];
+			} else {
+				$config['selected_language'] = $_SESSION['lang'];
+			}
+		} else {
+			if($_GET['lang']) {
+				$config['selected_language'] = $_GET['lang'];
+				$_SESSION['lang'] = $config['selected_language'];
+			} else {
+				$config['selected_language'] = $config['selected_language'];
+			}
+		}
+	}	
 ?>
