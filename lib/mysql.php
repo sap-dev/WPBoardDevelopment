@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.MySQL
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Core
+		* @file plugin.php
 	*/
 
 	namespace Itschi\lib;
@@ -13,8 +14,8 @@
 		private $connect = NULL;
 
 		function __construct($host, $username, $pw, $database) {
-			$this->connect = @mysql_connect($host, $username, $pw) or die('Verbindung zur Datenbank fehlgeschlagen');
-			@mysql_select_db($database, $this->connect) or die($this->error("Datenbank konnte nicht ausgewählt werden"));
+			$this->connect = @mysql_connect($host, $username, $pw) or die($this->error('Couldn´t connect to database'));
+			@mysql_select_db($database, $this->connect) or die($this->error("Database does not exist"));
 
 			mysql_unbuffered_query("SET NAMES 'utf8'", $this->connect);
 		}
