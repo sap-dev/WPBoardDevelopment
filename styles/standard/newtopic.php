@@ -1,7 +1,7 @@
 <?php template::display('header'); ?>
 
 <div id="writePost">
-	<form action="newtopic.php?edit=<?=template::getVar('EDIT'); ?>&id=<?=template::getVar('ID'); ?>" method="post" name="eintrag">
+	<form enctype="multipart/form-data" action="newtopic.php?edit=<?=template::getVar('EDIT'); ?>&id=<?=template::getVar('ID'); ?>" method="post" name="eintrag">
 		<div class="fLeft actionsL" style="width: 80%;">
 			<h1>
 				<a href="./forum.php">Forum</a> &rsaquo;
@@ -63,6 +63,19 @@
 			<div class="clear"></div>
 		</div>
 		<? endif; ?>
+		<div class="options">
+			<div class="title">
+				Dateianhänge:
+			</div>
+
+			<div class="content">
+				<input size="20" type="file" name="file1" />
+				<input size="20" type="file" name="file2" />
+				<input size="20" type="file" name="file3" />
+			</div>
+
+			<div class="clear"></div>
+		</div>
 		<div class="options">
 			<div class="title">
 				Optionen:
