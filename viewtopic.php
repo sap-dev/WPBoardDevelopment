@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.forum.viewtopic
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Core
+		* @file viewtopic.php
 	*/
 
 	require 'base.php';
@@ -171,6 +172,17 @@
 	 } else {
 		$online_time = date('d.m.y H:i', $row2['user_login']);
 	}
+	
+	$atti = 0;
+	$attsql = $db->query('SELECT * FROM ' . ATTACHEMENTS_TABLE . ' WHERE att_post = ' . $row2['post_id'] . '');
+	while ($row3 = $db->fetch_array($attsql)) {
+		$atti++;
+		template::assignBlock('attachements', array(
+			'ATT_FILE'			=>	$row3['att_file'],
+			'ATT_SIZE'			=>	$row3['att_size'],
+			'ATT_DOWNLOADS'		=>	$row3['att_downloads']
+		));
+	}
 
 
 		$post_num++;
@@ -182,6 +194,7 @@
 			'TRACK'			=>	($track_post == $row2['post_id']) ? 'post' : $row2['post_id'],
 			'IS_TOPIC'		=>	$row2['is_topic'],
 			'IS_ONLINE'		=>	$is_online,
+			'ATT'			=>  ($atti > 0),
 			'POSTS_NUM'		=>	$post_num,
 			'USER_WEBSITE'	=>	$row2['user_website'],
 			'USER_ICQ'		=>	$row2['user_icq'],
