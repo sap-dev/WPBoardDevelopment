@@ -35,5 +35,6 @@
 	define('STYLES_TABLE', $prefix . 'styles');
 	define('LABEL_TABLE', $prefix . 'label');
 	define('MENU_TABLE', $prefix . 'menu');
+	define('ATTACHEMENTS_TABLE', $prefix . 'attachements');
 	define('PREFIX', $prefix);
 ?>
