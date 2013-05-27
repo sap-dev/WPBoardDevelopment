@@ -30,6 +30,7 @@
 
 	if (!$edit) {
 		$title_tag = 'Forum | Neues Thema | ';
+		
 
 		$res = $db->query('
 			SELECT f.*, fr.mark_time
@@ -100,12 +101,31 @@
 
 				$post_id = $db->insert_id();
 
+				
+				if($_FILES['file1']['tmp_name']) {
+					$newfile1 = time().'_'.$_FILES['file1']['name'];
+					move_uploaded_file($_FILES['file1']['name'], 'images/attach/' . $newfile1);
+					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile1 ."'");
+				}
+				if($_FILES['file2']['tmp_name']) {
+					$newfile2 = time().'_'.$_FILES['file2']['name'];
+					move_uploaded_file($_FILES['file2']['name'], 'images/attach/' . $newfile2);
+					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile2 ."'");
+				}
+				if($_FILES['file3']['tmp_name']) {
+					$newfile3 = time().'_'.$_FILES['file3']['name'];
+					move_uploaded_file($_FILES['file3']['name'], 'images/attach/' . $newfile3);
+					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile3 ."'");
+				}
+				
 				$db->query('
 					UPDATE ' . TOPICS_TABLE . '
 					SET topic_last_post_id = ' . $post_id . '
 					WHERE topic_id = ' . $topic_id
 				);
-
+				
+			
+		
 				$db->query('
 					UPDATE ' . FORUMS_TABLE . '
 					SET	forum_topics = forum_topics + 1,
