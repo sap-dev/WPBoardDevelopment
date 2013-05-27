@@ -42,7 +42,6 @@
 			}
 
 			if (!empty($_FILES['file']['name'])) {
-				// include 'lib/functions/upload.php';
 
 				$filetypes = array(
 					'image/jpg'		=>	'jpg',
@@ -110,7 +109,6 @@
 		case 'account':
 
 			if (isset($_POST['form_email'])) {
-				// include 'lib/functions/user.php';
 				$fUser = functions::user();
 
 				if (md5($_POST['password']) != $user->row['user_password']) {
