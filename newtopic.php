@@ -104,17 +104,17 @@
 				
 				if($_FILES['file1']['tmp_name']) {
 					$newfile1 = time().'_'.$_FILES['file1']['name'];
-					move_uploaded_file($_FILES['file1']['name'], 'images/attach/' . $newfile1);
+					move_uploaded_file($_FILES['file1']['tmp_name'], 'images/attach/' . $newfile1);
 					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile1 ."'");
 				}
 				if($_FILES['file2']['tmp_name']) {
 					$newfile2 = time().'_'.$_FILES['file2']['name'];
-					move_uploaded_file($_FILES['file2']['name'], 'images/attach/' . $newfile2);
+					move_uploaded_file($_FILES['file2']['tmp_name'], 'images/attach/' . $newfile2);
 					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile2 ."'");
 				}
 				if($_FILES['file3']['tmp_name']) {
 					$newfile3 = time().'_'.$_FILES['file3']['name'];
-					move_uploaded_file($_FILES['file3']['name'], 'images/attach/' . $newfile3);
+					move_uploaded_file($_FILES['file3']['tmp_name'], 'images/attach/' . $newfile3);
 					$res = $db->query("INSERT INTO ". ATTACHEMENTS_TABLE ." SET att_post = '". $post_id ."', att_file = '" . $newfile3 ."'");
 				}
 				

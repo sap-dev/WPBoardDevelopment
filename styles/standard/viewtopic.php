@@ -124,7 +124,7 @@
 										<legend><?=template::getLanguage($config['selected_language'],'attachements_text');?></legend>
 										<ul>
 									<?php foreach(template::$blocks['attachements'] as $att): ?>	
-											<li><img src="http://www.woltlab.com/forum/wcf/icon/fileTypeIconArchiveM.png" style="vertical-align: middle;">&nbsp;<?=$att['ATT_FILE'];?>&nbsp;<small>(<?=$att['ATT_DOWNLOADS'];?> Downloads)</small></li>
+											<li><img src="http://www.woltlab.com/forum/wcf/icon/fileTypeIconArchiveM.png" style="vertical-align: middle;">&nbsp;<a href="viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?>&downloadAttachement=<?=$att['ATT_ID'];?>"><?=$att['ATT_FILE'];?></a>&nbsp;<small>(<?=$att['ATT_DOWNLOADS'];?> Downloads)</small></li>
 									<?php endforeach; ?>
 										</ul>
 									</fielset>

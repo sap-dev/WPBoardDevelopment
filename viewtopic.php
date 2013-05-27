@@ -9,6 +9,22 @@
 
 	require 'base.php';
 
+	
+	if($_GET['downloadAttachement']) {
+		$res = $db->query("SELECT *	FROM " . ATTACHEMENTS_TABLE . " WHERE att_id = '".(int)$_GET['downloadAttachement']."'");
+		$row = $db->fetch_array($res);
+		if($row['att_file']) {
+			$newdownloads = $row['att_downloads']+1;
+			$res = $db->query("UPDATE " . ATTACHEMENTS_TABLE . " SET att_downloads = '".$newdownloads."' WHERE att_id = '".(int)$row['att_id']."'");
+			header('Location: images/attach/'.$row['att_file'].'');
+		}
+	}
+
+
+	$row = $db->fetch_array($res);
+	$db->free_result($res);
+	
+	
 	$last_time = 0;
 
 	$res = $db->query(
@@ -24,6 +40,7 @@
 			LEFT JOIN ' . FORUMS_TABLE . ' f ON f.forum_id = t.forum_id
 		WHERE t.topic_id = ' . (int)$_GET['id']
 	);
+
 
 	$row = $db->fetch_array($res);
 	$db->free_result($res);
@@ -178,6 +195,7 @@
 	while ($row3 = $db->fetch_array($attsql)) {
 		$atti++;
 		template::assignBlock('attachements', array(
+			'ATT_ID'			=>	$row3['att_id'],
 			'ATT_FILE'			=>	$row3['att_file'],
 			'ATT_SIZE'			=>	$row3['att_size'],
 			'ATT_DOWNLOADS'		=>	$row3['att_downloads']
