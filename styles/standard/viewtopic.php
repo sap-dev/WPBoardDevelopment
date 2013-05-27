@@ -117,7 +117,18 @@
 								<?php endif; ?>
 
 								<?=$posts['TEXT']; ?>
-									
+								
+								<?php if($posts['FIRST_POST'] AND $posts['ATT']): ?>
+									<br /><br />
+									<fieldset class="attachmentFile">
+										<legend><?=template::getLanguage($config['selected_language'],'attachements_text');?></legend>
+										<ul>
+									<?php foreach(template::$blocks['attachements'] as $att): ?>	
+											<li><img src="http://www.woltlab.com/forum/wcf/icon/fileTypeIconArchiveM.png" style="vertical-align: middle;">&nbsp;<?=$att['ATT_FILE'];?>&nbsp;<small>(<?=$att['ATT_DOWNLOADS'];?> Downloads)</small></li>
+									<?php endforeach; ?>
+										</ul>
+									</fielset>
+								<?php endif; ?>
 								
 							</div>
 							
