@@ -4,7 +4,7 @@
 		* @copyright 2013 WPBoard
 		* @package com.wpboard.plugin
 		* @category Core
-		* @file plugin.php
+		* @file mysql.php
 	*/
 
 	namespace Itschi\lib;
