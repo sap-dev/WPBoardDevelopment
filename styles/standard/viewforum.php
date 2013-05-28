@@ -108,10 +108,10 @@
 		if (isset(template::$blocks['topics'])) {
 			foreach (template::$blocks['topics'] as $topic):
 	?>
-		<div id="topic_text_<?=$topic['ID'];?>" class="inline_div">
+		<div id="topic_text_<?=$topic['ID'];?>" class="inline_div" style="z-index: 999; padding-right: 20px;">
 			<?=$topic['PREVIEW_TEXT']; ?>
-			<div style="position: absolute; top: 0; right: 0; padding: 5px;">
-				<a href="#" onClick="$('#topic_text_<?=$topic['ID'];?>').hide();"><img src="http://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/actions/button_cancel.png"></a>
+			<div style="position: absolute; top: 1px; right: 1px; padding: 5px;">
+				<a href="#" onClick="$('#topic_text_<?=$topic['ID'];?>').hide(); $('#dunkel').hide();"><img src="http://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/actions/button_cancel.png"></a>
 			</div>
 		</div>
 			<div class="item">
@@ -123,7 +123,7 @@
 							<td class="status center" width="6%">
 						<?php endif; ?>
 
-							<img src="styles/standard/images/icons/topics/<?=$topic['ICON']; ?>topic.png" border="0" onClick=" $('#menu_<?=$topic['ID'];?>').slideToggle();" />
+							<img src="styles/standard/images/icons/topics/<?=$topic['ICON']; ?>topic.png" border="0" onClick="$('#menu_<?=$topic['ID'];?>').slideToggle();" />
 							<div id="menu_<?=$topic['ID'];?>" class="menu_topics">
 								<?php if ($user->row): ?>
 									<?php if (template::getVar('IS_MOD')): ?>
@@ -163,7 +163,7 @@
 							
 
 						</td>
-						<td><a href="#" onClick="$('#topic_text_<?=$topic['ID']; ?>').show();"><img src="http://cdn2.iconfinder.com/data/icons/humano2/16x16/actions/old-edit-find.png"></a></td>
+						<td><a href="#" onClick="$('#topic_text_<?=$topic['ID']; ?>').show(); $('#dunkel').slideToggle();"><img src="http://cdn2.iconfinder.com/data/icons/humano2/16x16/actions/old-edit-find.png"></a></td>
 
 						<td class="center" width="10%">
 							<b style="font-size: 16px;"><?=$topic['POSTS']; ?></b><br />

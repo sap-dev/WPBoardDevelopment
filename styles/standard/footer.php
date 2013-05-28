@@ -13,6 +13,6 @@
 
 
 			<?php template::displayArea('footer'); ?>
-		
+			<div id="dunkel"></div>
 	</body>
 </html>

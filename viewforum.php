@@ -126,7 +126,7 @@
 			'LAST_POST_USERNAME'	=>	$row2['topic_last_post_username'],
 			'LAST_POST_ID'			=>	$row2['topic_last_post_id'],
 			'LAST_POST_USER_AVATAR'	=>	($row33['user_avatar']) ? $row33['user_avatar'] : $config['default_avatar'],
-			'PREVIEW_TEXT'			=>	template::strShort(replace($row44['post_text'], $row44['enable_bbcodes'], $row44['enable_smilies'], $row44['enable_urls']),300)
+			'PREVIEW_TEXT'			=>	template::strShort($row44['post_text'],300)
 		));
 	}
 
