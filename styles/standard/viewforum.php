@@ -133,7 +133,7 @@
 								</a>
 							<?php endif; ?>
 
-							<? if($topic['LABEL_EXIST']): ?><?=$topic['LABEL'];?>&nbsp;<? endif; ?> <a class="forum" href="viewtopic.php?id=<?=$topic['ID']; ?>"><?=$topic['TITLE']; ?></a> <?=$topic['PAGES']; ?>
+							<? if($topic['LABEL_EXIST']): ?><?=$topic['LABEL'];?>&nbsp;<? endif; ?> <a class="forum" href="viewtopic.php?id=<?=$topic['ID']; ?>"><?=$topic['TITLE']; ?></a>
 
 							von
 							<?php if ($topic['USER_ID']): ?>
@@ -141,7 +141,10 @@
 							<?php else: ?>
 								<span>Unbekannt</span>
 							<?php endif; ?>
-
+							<?=$topic['PAGES']; ?>
+							<?php if($topic['ATTACH']): ?>
+								<img src="http://www.woltlab.com/forum/wcf/icon/attachmentS.png" style="vertical-align: middle;">
+							<? endif; ?>
 							<br />
 							<span>
 								<small class="grey"><?=$topic['TIME']; ?> Uhr</small>
@@ -156,9 +159,7 @@
 								
 							<?php endif; ?>
 
-							<?php if ($posts['USER_ID'] == $user->row['user_id'] || template::getVar('IS_MOD')): ?>
-								<a href="<?php if ($posts['IS_TOPIC']): ?>viewforum.php?id=<?=$topic['ID']; ?><?php else: ?>viewtopic.php?id=<?=$topic['ID']; ?><?php endif; ?>&delete=<?=$posts['ID']; ?>"><img src="http://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/actions/button_cancel.png" title="Löschen"></a>
-							<?php endif; ?>
+							
 							<?php endif; ?>
 							</div>
 
