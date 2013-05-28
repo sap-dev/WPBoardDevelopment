@@ -31,11 +31,11 @@
 				$this->row = array('user_id' => $session_user_id);
 				$this->update_vars();
 
-				$db->query('
-					UPDATE ' . USERS_TABLE . '
-					SET user_lastvisit = ' . time() . '
-					WHERE user_id = ' . (int)$this->row['user_id']
-				);
+				$db->query("
+					UPDATE " . USERS_TABLE . "
+					SET user_lastvisit = '" . time() . "'
+					WHERE user_id = '" . (int)$this->row['user_id']."'
+				");
 
 				if ($this->row['user_ban']) {
 					$this->check_ban();
@@ -251,7 +251,8 @@
 					$db->query('
 						UPDATE ' . ONLINE_TABLE . '
 						SET	online_lastvisit = ' . time() . ",
-							online_agent = '" . $agent . "'
+							online_agent = '" . $agent . "',
+							user_page = '". $_SERVER['REQUEST_URI'] ."'
 						WHERE user_id = " . $user_id
 					);
 
@@ -273,15 +274,16 @@
 					UPDATE ' . ONLINE_TABLE . '
 					SET	user_id = ' . $user_id . ',
 						online_lastvisit = ' . time() . ",
-						online_agent = '" . $agent . "'
+						online_agent = '" . $agent . "',
+						user_page = '". $_SERVER['REQUEST_URI'] ."'
 					WHERE online_ip = '" . $ip . "'
 						AND user_id = 0
 				");
 			} else {
 				$db->query('
 					INSERT INTO ' . ONLINE_TABLE . '
-					(user_id, online_lastvisit, online_ip, online_agent) VALUES
-					(' . $user_id . ', ' . time() . ", '" . $ip . "', '" . $agent . "')
+					(user_id, online_lastvisit, online_ip) VALUES
+					(' . $user_id . ', ' . time() . ", '" . $ip . "')
 				");
 			}
 		}

@@ -1,11 +1,14 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.install
-	* @since 2013/04/09
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Installer
+		* @file install.php
 	*/
 
+	include('lib/constants.php');
+	
 	if (!is_writable(dirname(__FILE__) . '/')) chmod(dirname(__FILE__) . '/', 0755);
 
 	if (is_file('config.incomplete.php')) {
@@ -17,15 +20,7 @@
 			header("Location: ./");
 		}
 	} else {
-		if (is_file('config.php')) {
-			header("Location: ./");
-		} else {
-			$file = fopen('config.incomplete.php', 'w');
-			$bytes = fwrite($file, '<?php /* Itschi.installer - do not delete */ $mysql_installed = false; $admin_installed = false; ?>');
-			fclose($file);
-
-			header("Location: ./install.php");
-		}
+		
 	}
 
 	function read_ini($key) {
@@ -101,6 +96,54 @@
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 		");
 
+		mysql_unbuffered_query("
+			CREATE TABLE IF NOT EXISTS `" . $prefix . "attachements` (
+			  `att_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `att_post` int(11) NOT NULL,
+			  `att_file` text NOT NULL,
+			  `att_size` varchar(255) DEFAULT NULL,
+			  `att_downloads` int(11) NOT NULL DEFAULT '0',
+			  PRIMARY KEY (`att_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+		");
+		
+		mysql_unbuffered_query("
+			CREATE TABLE IF NOT EXISTS `" . $prefix . "menu` (
+				  `menu_id` int(11) NOT NULL AUTO_INCREMENT,
+				  `menu_link` varchar(255) NOT NULL,
+				  `menu_text` varchar(255) NOT NULL,
+				  `menu_icon` varchar(255) NOT NULL,
+				  PRIMARY KEY (`menu_id`)
+				) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+		");
+		
+		mysql_unbuffered_query("
+			CREATE TABLE IF NOT EXISTS `" . $prefix . "language` (
+			  `lang_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `lang_lang` varchar(255) NOT NULL,
+			  `lang_code` varchar(255) NOT NULL,
+			  `lang_translate` text NOT NULL,
+			  PRIMARY KEY (`lang_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+		");
+		
+		mysql_unbuffered_query("
+			CREATE TABLE IF NOT EXISTS `" . $prefix . "languages` (
+			  `lang_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `lang_code` varchar(255) NOT NULL,
+			  `lang_icon` varchar(255) NOT NULL,
+			  `lang_name` varchar(255) NOT NULL,
+			  PRIMARY KEY (`lang_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+		");
+		
+		mysql_unbuffered_query("
+		INSERT INTO `" . $prefix . "languages` (`lang_id`, `lang_code`, `lang_icon`, `lang_name`) VALUES
+			(1, 'de', 'http://cdn1.iconfinder.com/data/icons/famfamfam_flag_icons/de.png', 'Deutsch'),
+			(2, 'en', 'http://cdn1.iconfinder.com/data/icons/sweet-16s/16/england.png', 'English');
+		");
+		
+				
 		mysql_unbuffered_query("
 			CREATE TABLE IF NOT EXISTS `" . $prefix . "banlist` (
 			  `ban_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -207,37 +250,77 @@
 		");
 
 		mysql_unbuffered_query("
-			INSERT INTO `" . $prefix . "config` (`config_name`, `config_value`, `is_dynamic`) VALUES
-			('newest_user_id', '1', 1),
-			('newest_user_level', '2', 1),
-			('posts_num', '0', 1),
-			('topics_num', '1', 1),
-			('users_num', '1', 1),
-			('title', 'Titel der Seite', 0),
-			('description', 'Ein Text der dein Forum beschreibt', 0),
-			('theme', 'standard', 0),
-			('topics_perpage', '20', 0),
-			('posts_perpage', '10', 0),
-			('points_topic', '1', 0),
-			('points_post', '2', 0),
-			('enable_captcha', '1', 0),
-			('enable', '0', 0),
-			('enable_avatars', '1', 0),
-			('posts_perday', '30', 0),
-			('enable_text', '', 0),
-			('enable_unlock', '0', 0),
-			('enable_bots', '1', 0),
-			('unlock_delete', '7', 0),
-			('avatar_min_height', '50', 0),
-			('avatar_min_width', '50', 0),
-			('avatar_max_width', '160', 0),
-			('avatar_max_height', '180', 0),
-			('enable_delete', '1', 0),
-			('mail_limit', '200', 0),
-			('max_post_chars', '50000', 0),
-			('default_avatar', 'default.png', 0),
-			('index_news', 0, 0);
+					INSERT INTO `" . $prefix . "config` (`config_name`, `config_value`, `is_dynamic`) VALUES
+					('newest_user_id', '1', 1),
+					('newest_user_level', '2', 1),
+					('posts_num', '0', 1),
+					('topics_num', '1', 1),
+					('users_num', '1', 1),
+					('title', 'Titel der Seite', 0),
+					('description', 'Ein Text der das Forum beschreibt', 0),
+					('theme', 'standard', 0),
+					('topics_perpage', '20', 0),
+					('posts_perpage', '10', 0),
+					('points_topic', '1', 0),
+					('points_post', '2', 0),
+					('enable_captcha', '1', 0),
+					('enable', '0', 0),
+					('enable_avatars', '1', 0),
+					('posts_perday', '30', 0),
+					('enable_text', '', 0),
+					('enable_unlock', '0', 0),
+					('enable_bots', '1', 0),
+					('unlock_delete', '7', 0),
+					('avatar_min_height', '50', 0),
+					('avatar_min_width', '50', 0),
+					('avatar_max_width', '160', 0),
+					('avatar_max_height', '180', 0),
+					('enable_delete', '1', 0),
+					('mail_limit', '200', 0),
+					('max_post_chars', '50000', 0),
+					('default_avatar', 'default.png', 0),
+					('index_news', 0, 0);
 		");
+
+
+	
+		mysql_unbuffered_query("
+			INSERT INTO `" . $prefix . "language` (`lang_id`, `lang_lang`, `lang_code`, `lang_translate`) VALUES
+			(1, 'de', 'threads', 'Themen'),
+			(2, 'de', 'thread', 'Thema'),
+			(3, 'de', 'forum', 'Forum'),
+			(4, 'de', 'post', 'Beitrag'),
+			(5, 'de', 'posts', 'Beiträge'),
+			(6, 'de', 'unknown', 'Unbekannt'),
+			(7, 'de', 'nopost', 'Kein Beitrag'),
+			(8, 'de', 'whoisonline', 'Wer ist online?'),
+			(9, 'de', 'admin', 'Administrator'),
+			(10, 'de', 'mod', 'Moderator'),
+			(11, 'de', 'bot', 'Bot'),
+			(12, 'de', 'legend', 'Legende'),
+			(13, 'de', 'user', 'Mitglieder'),
+			(14, 'de', 'nobody', 'Niemand'),
+			(15, 'de', 'stat', 'Statistik'),
+			(16, 'de', 'newest_member', 'Unser neustes Mitglied:'),
+			(17, 'de', 'clock', 'Uhr'),
+			(18, 'de', 'hello', 'Hallo'),
+			(19, 'de', 'config', 'Einstellungen'),
+			(20, 'de', 'logout', 'Logout'),
+			(21, 'de', 'register', 'Registrieren'),
+			(22, 'de', 'login', 'Login'),
+			(23, 'de', 'home', 'home :)'),
+			(24, 'de', 'only_admin', 'Forum ist nur für Administratoren sichtbar'),
+			(25, 'de', 'only_mod', 'Forum ist nur für Moderatoren sichtbar'),
+			(26, 'de', 'plugin_does_exists', 'Das von Ihnen gewählte Plugin ist nicht vorhanden - bitte wenden Sie sich an den Administrator.'),
+			(27, 'de', 'attachements_text', 'Folgende Dateien wurden angehangen:'),
+			(28, 'de', 'move', 'Verschieben'),
+			(29, 'de', 'important', 'wichtig makieren'),
+			(30, 'de', 'close', 'Schließen / Öffnen'),
+			(31, 'de', 'un', 'un'),
+			(32, 'de', 'thread_close', 'Thema schließen'),
+			(33, 'de', 'thread_open', 'Thema öffnen'),
+			(34, 'de', 'edit', 'Bearbeiten');
+			");
 
 		mysql_unbuffered_query("
 			CREATE TABLE IF NOT EXISTS `".$prefix."forums` (
@@ -262,12 +345,6 @@
 			  KEY `forum_order` (`forum_order`),
 			  KEY `forum_level` (`forum_level`)
 			) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
-		");
-
-		mysql_unbuffered_query("
-			INSERT INTO `" . $prefix . "forums` (`forum_id`, `forum_name`, `forum_description`, `forum_order`, `is_category`, `forum_level`, `forum_posts`, `forum_topics`, `forum_closed`, `forum_last_post_id`, `forum_last_post_user_id`, `forum_last_post_time`, `forum_last_post_topic_id`, `forum_last_post_username`, `forum_last_post_user_level`) VALUES
-			(1, 'Erste Kategorie', '', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '', 0),
-			(2, 'Erstes Forum', 'Ein Text der das Forum beschreibt', 2, 0, 0, 0, 1, 0, 1, 1, " . time() . ", 1, '" . $username . "', 2);
 		");
 
 		mysql_unbuffered_query("
@@ -309,8 +386,9 @@
 			CREATE TABLE IF NOT EXISTS `" . $prefix . "online` (
 			  `online_lastvisit` int(11) unsigned NOT NULL DEFAULT '0',
 			  `online_ip` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-			  `online_agent` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+			  `online_agent` varchar(150) NOT NULL DEFAULT '0',
 			  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+			  `user_page` varchar(255) NOT NULL DEFAULT '0',
 			  KEY `online_lastvisit` (`online_lastvisit`),
 			  KEY `user_id` (`user_id`),
 			  KEY `ip_userid` (`online_ip`,`user_id`)
@@ -372,7 +450,7 @@
 			  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 			  `forum_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 			  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-			  `post_text` text COLLATE utf8_unicode_ci NOT NULL,
+			  `post_text` text COLLATE utf8_unicode_ci DEFAULT '0',
 			  `enable_bbcodes` tinyint(1) unsigned NOT NULL DEFAULT '1',
 			  `enable_smilies` tinyint(1) unsigned NOT NULL DEFAULT '1',
 			  `enable_urls` tinyint(1) unsigned NOT NULL DEFAULT '1',
@@ -380,7 +458,7 @@
 			  `is_topic` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  `post_time` int(11) unsigned NOT NULL DEFAULT '0',
 			  `post_edit_user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-			  `post_edit_username` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+			  `post_edit_username` varchar(15) DEFAULT '0',
 			  `post_edit_user_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  `post_edit_time` int(11) unsigned NOT NULL DEFAULT '0',
 			  PRIMARY KEY (`post_id`),
@@ -393,7 +471,7 @@
 
 		mysql_unbuffered_query("
 			INSERT INTO `" . $prefix . "posts` (`post_id`, `topic_id`, `forum_id`, `user_id`, `post_text`, `enable_bbcodes`, `enable_smilies`, `enable_urls`, `enable_signatur`, `is_topic`, `post_time`, `post_edit_user_id`, `post_edit_username`, `post_edit_user_level`, `post_edit_time`) VALUES
-			(1, 1, 2, 1, 'Die Installation war erfolgreich.\r\n\r\nVielen Dank für das Nutzen des Itschi-Forums!', 1, 1, 1, 1, 1, " . time() . ", 0, '', 0, 0);
+			(1, 1, 2, 1, 'Die Installation war erfolgreich.\r\n\r\nVielen Dank für das Nutzen des WPBoards!', 1, 1, 1, 1, 1, " . time() . ", 0, '', 0, 0);
 		");
 
 		mysql_unbuffered_query("
@@ -479,7 +557,7 @@
 		mysql_unbuffered_query("
 			INSERT INTO `".$prefix."styles` (`id`, `title`, `author`, `version`, `directory`, `active`)
 			VALUES
-				(1, 'Standard', 'Itschi', '1.0.0', 'standard', 1);
+				(1, 'Standard', 'WPBoard', '1.0.0', 'standard', 1);
 		");
 
 		mysql_unbuffered_query("
@@ -501,19 +579,23 @@
 			  `topic_last_post_user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 			  `topic_last_post_time` int(11) unsigned NOT NULL DEFAULT '0',
 			  `topic_last_post_post_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-			  `topic_last_post_username` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+			  `topic_last_post_username` varchar(15) COLLATE utf8_unicode_ci DEFAULT '0',
 			  `topic_last_post_user_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
 			  `topic_last_post_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+			  `topic_label` int(11) NOT NULL DEFAULT '0',
 			  PRIMARY KEY (`topic_id`),
 			  KEY `forum_id` (`forum_id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 		");
 
+			
 		mysql_unbuffered_query("
-			INSERT INTO `" . $prefix . "topics` (`topic_id`, `forum_id`, `topic_title`, `user_id`, `username`, `user_level`, `topic_time`, `topic_important`, `topic_closed`, `topic_posts`, `topic_views`, `poll_title`, `poll_time`, `poll_votes`, `topic_last_post_user_id`, `topic_last_post_time`, `topic_last_post_post_id`, `topic_last_post_username`, `topic_last_post_user_level`, `topic_last_post_id`) VALUES
-			(1, 2, 'Erstes Thema', 1, '" . $username . "', 2, " . time() . ", 0, 0, 0, 0, '', 0, 0, 1, " . time() . ", 0, '" . $username . "', 2, 1);
+			INSERT INTO `" . $prefix . "menu` (`menu_id`, `menu_link`, `menu_text`, `menu_icon`) VALUES
+				(1, 'index', 'Startseite', 'http://www.woltlab.com/forum/wcf/icon/websiteM.png'),
+				(2, 'forum', 'Forum', 'http://cdn4.iconfinder.com/data/icons/Hypic_Icon_Pack_by_shlyapnikova/16/forum_16.png'),
+				(3, 'memberlist', 'Mitglieder', 'http://cdn3.iconfinder.com/data/icons/humano2/24x24/emblems/emblem-people.png');
 		");
-
+		
 		mysql_unbuffered_query("
 			CREATE TABLE IF NOT EXISTS `" . $prefix . "topics_track` (
 			  `topic_id` int(11) unsigned NOT NULL DEFAULT '0',
@@ -551,6 +633,8 @@
 			  `user_register` int(11) unsigned NOT NULL DEFAULT '0',
 			  `user_mails` tinyint(3) unsigned NOT NULL DEFAULT '0',
 			  `user_unlock` varchar(6) CHARACTER SET utf8 NOT NULL,
+			  `user_ueber` TEXT NOT NULL,
+			  `user_lang` varchar(244) NOT NULL,
 			  PRIMARY KEY (`user_id`),
 			  UNIQUE KEY `username` (`username`),
 			  UNIQUE KEY `email` (`user_email`),
@@ -558,9 +642,24 @@
 			  KEY `user_lastvisit` (`user_lastvisit`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=1 AUTO_INCREMENT=2 ;
 		");
-
-		mysql_unbuffered_query('COMMIT');
-
+		
+		mysql_unbuffered_query("
+			CREATE TABLE IF NOT EXISTS `" . $prefix . "label` (
+			  `label_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `label_color` varchar(255) NOT NULL,
+			  `label_text` varchar(255) NOT NULL,
+			  PRIMARY KEY (`label_id`)
+			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+		");
+		
+		mysql_unbuffered_query("
+			INSERT INTO `" . $prefix . "label` (`label_id`, `label_color`, `label_text`) VALUES
+				(1, '#920000', 'offen'),
+				(2, '', 'bestätigt'),
+				(3, 'green', 'Umgesetzt'),
+				(4, 'orange', 'in Bearbeitung');
+			
+		");
 		incompleteFile('update', true, false);
 
 		return array(
@@ -623,16 +722,26 @@
 			);
 		}
 
+		
 		mysql_unbuffered_query("
-			INSERT INTO `" . $prefix . "users` (`user_id`, `user_lastvisit`, `username`, `user_password`, `user_email`, `user_avatar`, `user_rank`, `user_signatur`, `user_signatur_bbcodes`, `user_signatur_smilies`, `user_signatur_urls`, `user_points`, `user_posts`, `user_ban`, `user_ip`, `user_website`, `user_icq`, `user_skype`, `user_login`, `user_level`, `user_register`, `user_mails`, `user_unlock`) VALUES
-			(1, " . time() . ", '" . $username . "', '" . md5($password) . "', '" . $email . "', '', 14, '', 1, 1, 1, 10, 1, 0, '" . $_SERVER['REMOTE_ADDR'] . "', '', '', '', 0, 2, " . time() . ", 0, '');
+		INSERT INTO `" . $prefix . "users` SET user_id = '1', username = '".$username."', user_password = '".md5($password)."', user_email = '".$email."', user_register = ".time().", user_avatar = '', user_signatur = '', user_ip = '', user_lang = 'de', user_website = '', user_icq = '', user_skype = '', user_unlock = '', user_ueber = '', user_level = '2', user_rank = '16', user_lastvisit = ".time()."
+		") OR die(mysql_error());
+		
+		mysql_unbuffered_query("
+			INSERT INTO `" . $prefix . "forums` (`forum_id`, `forum_name`, `forum_description`, `forum_order`, `is_category`, `forum_level`, `forum_posts`, `forum_topics`, `forum_closed`, `forum_last_post_id`, `forum_last_post_user_id`, `forum_last_post_time`, `forum_last_post_topic_id`, `forum_last_post_username`, `forum_last_post_user_level`) VALUES
+			(1, 'Erste Kategorie', '', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '', 0),
+			(2, 'Erstes Forum', 'Ein Text der das Forum beschreibt', 2, 0, 0, 0, 1, 0, 1, 1, " . time() . ", 1, '" . $username . "', 2);
 		");
  
-		// Insert the newest User and the board email
 		mysql_unbuffered_query("
 			INSERT INTO `" . $prefix . "config` (`config_name`, `config_value`, `is_dynamic`) VALUES
 				('newest_username', '" . $username . "', 1),
 				('email', '" . $email . "', 0)
+		");
+		
+			mysql_unbuffered_query("
+			INSERT INTO `" . $prefix . "topics` (`topic_id`, `forum_id`, `topic_title`, `user_id`, `username`, `user_level`, `topic_time`, `topic_important`, `topic_closed`, `topic_posts`, `topic_views`, `poll_title`, `poll_time`, `poll_votes`, `topic_last_post_user_id`, `topic_last_post_time`, `topic_last_post_post_id`, `topic_last_post_username`, `topic_last_post_user_level`, `topic_last_post_id`) VALUES
+			(1, 2, 'Erstes Thema', 1, '" . $username . "', 2, " . time() . ", 0, 0, 0, 0, '', 0, 0, 1, " . time() . ", 0, '" . $username . "', 2, 1);
 		");
 
 		incompleteFile('delete');
@@ -647,21 +756,30 @@
 		mysql_connect($hostname, $username, $password) or die(mysql_error());
 		mysql_select_db($database) or die(mysql_error());
 	}
-
+	if($_GET['step']=="") {
+		$prozent = '25';
+	} else {
+		$prozent = $_GET['step']*25;
+	}
 	echo '
 		<!DOCTYPE html>
 			<html>
 				<head>
 					<meta charset="utf-8" />
-					<title>Itschi &rsaquo; Installation</title>
+					<title>WPBoard &rsaquo; Installation</title>
 					<link rel="stylesheet" href="styles/standard/style.css" />
 					<link rel="stylesheet" href="styles/installer.css" />
 				</head>
 
-				<body>
+				<body style="background: url(http://i.imagebanana.com/img/pustmdz8/bg.png) repeat-x scroll 0 0 / 35px auto #FFFFFF;">
 					<div id="wrapper">
 						<div class="content">
-							<img src="./images/logo.png" alt="Itschi - Setup" style="margin-bottom: 40px;" />
+							<img src="./images/logo.png" alt="WPBoard" style="margin-top: -80px;" />
+							
+							<div style="width: 600px; border: 1px solid #000000; border-radius: 3px 3px 3px 3px; height: 22px;">
+								<div style="width: '.$prozent.'%; height: 100%; background: #63B6DB;">&nbsp;<span style="color: #ffffff;">'.$prozent.'% fertiggestellt</span></div>
+							</div><br />
+							
 	';
 
 	define('STATUS_OK', '<span style="color: green;">&#10003;</span>');
@@ -751,7 +869,7 @@
 						'username'	=>	'',
 						'password'	=>	'',
 						'database'	=>	'',
-						'prefix'	=>	'itschi_'
+						'prefix'	=>	'wpboard_'
 					);
 				}
 
@@ -761,7 +879,7 @@
 							<h2><small style="font-size: 14px;">Schritt 2:</small> MySQL-Zugang</h2>
 
 							<p>
-								Gib hier deine MySQL-Zugangsdaten ein.
+								Bitte geben Sie Ihre MySQL-Zugangsdaten ein.
 							</p>
 
 							<br />
@@ -791,12 +909,12 @@
 
 			if ($error == 0) {
 				if (isset($_POST['submit'])) {
-					$username = dbChars($_POST['username']);
+					$username2 = dbChars($_POST['username2']);
 					$password = dbChars($_POST['password']);
 					$password2 = dbChars($_POST['password2']);
 					$email = dbChars($_POST['email']);
 
-					$error = createAdmin($prefix, $username, $email, $password, $password2);
+					$error = createAdmin($prefix, $username2, $email, $password, $password2);
 
 					if ($error['code'] > 0) {
 						echo '
@@ -823,7 +941,7 @@
 					}
 
 					$values = array(
-						'username'	=>	$username,
+						'username'	=>	$username2,
 						'password'	=>	$password,
 						'password2'	=>	$password2,
 						'email'		=>	$email
@@ -844,14 +962,14 @@
 							<h2><small style="font-size: 14px;">Schritt 3:</small> Benutzer anlegen</h2>
 
 							<p>
-								Den Benutzernamen und das Passwort ben&ouml;tigst du sp&auml;ter zum Einloggen in den
-								Administrationsbereich. Er ist zugleich auch dein Benutzer.
+								Den Benutzernamen und das Passwort ben&ouml;tigen Sie sp&auml;ter zum Einloggen in den
+								Administrationsbereich. Er ist zugleich auch Ihr Benutzer.
 							</p>
 
 							<br />
 
 							<form method="post" action="">
-								<input type="text" name="username" value="'.$values['username'].'" placeholder="Benutzername" />
+								<input type="text" name="username2" value="'.$values['username2'].'" placeholder="Benutzername" />
 								<input type="password" name="password" value="'.$values['password'].'" placeholder="Passwort" />
 								<input type="password" name="password2" value="'.$values['password2'].'" placeholder="Passwort wiederholen" />
 								<input type="email" name="email" value="'.$values['email'].'" placeholder="E-Mail-Adresse" />
@@ -870,11 +988,11 @@
 			# Finished
 			echo '
 				<section>
-					<h2>Fertig!</h2>
+					<h2>Installation abgeschlossen!</h2>
 
 					<p>
-						Itschi ist jetzt fertig installiert und kann benutzt werden.<br />
-						<b>Vergiss nicht, <code>install.php</code> zu l&ouml;schen!</b>
+						Das WPBoard wurde fertig installiert und kann benutzt werden.<br />
+						<b>Bitte löschen Sie die install.php Datei!</b>
 					</p>
 				</section>
 			';
@@ -885,13 +1003,13 @@
 			# Step 1
 			echo '
 				<section>
-					<h2>Willkommen!</h2>
+					<h2>Willkommen - Version '.VERSION.'</h2>
 
 					<p>
-						<b>Willkommen beim Itschi-Forum.</b><br />
-						Damit sichergestellt werden kann, dass Itschi rund l&auml;uft, muss dein Webserver ein
+						<b>Willkommen beim WP-Board.</b><br />
+						Damit sichergestellt werden kann, dass unsere Software auf Ihrem System l&auml;uft, muss der Webserver ein
 						paar Voraussetzungen erf&uuml;llen. Wenn eine der Voraussetzungen nicht erf&uuml;llt wird,
-						spreche mit dem Administrator deines Webservers oder, wenn du selbst der Administrator bist,
+						sprechen Sie mit Ihrem Administrator Webservers oder, wenn Sie selber der Administrator sind,
 						erf&uuml;lle die Voraussetzungen.
 					</p>
 				</section>

@@ -70,7 +70,7 @@
 		<div id="header_wrap">
 			<header>
 				<div class="logo">
-					<a href="./" title="test1234"><img src="http://creatr.cc/creatr/logo/Web%20Power%20Board.png?1368529574" alt="Logo" /></a>
+					<a href="./" title="test1234"><img src="./images/logo.png" alt="Logo" /></a>
 				</div>
 
 				<?php template::displayArea('header'); ?>

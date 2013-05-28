@@ -26,12 +26,12 @@
 				<title>SQL Error</title>
 				<link rel="stylesheet" href="./styles/error.css" />
 				<div id="fatalError">
-					<div class="title"><h2>SQL-Error <span>(' . mysql_errno() . ')</span></h2></div>
+					<div class="title"><h2>SQL-Error</h2></div>
 
 					<div class="error MySQL">
 						' . mysql_error() . '
-
-						<div class="code"><code>' . htmlspecialchars($sql) . '</code></div>
+<br><br>
+'.$sql.'
 					</div>
 				</div>
 			');

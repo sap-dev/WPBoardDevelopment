@@ -72,7 +72,10 @@
 				}
 			}
 
-		
+			if (!$token_is_valid && is_array($user->row)) {
+				message_box('Es ist ein Fehler aufgetreten, bitte lade die Seite neu.', '', '');
+			}
+
 			return false;
 		}
 
@@ -101,9 +104,9 @@
 				}
 
 				if (substr($matches[0], 0, 4) == 'href') {
-					return 'href="'.$file.$parameter.$adminmenu.'"';
+					return 'href="'.$file.$parameter.'"';
 				} else {
-					return 'action="'.$file.$parameter.$adminmenu.'"';
+					return 'action="'.$file.$parameter.'"';
 				}
 			} else {
 				return $matches[0];

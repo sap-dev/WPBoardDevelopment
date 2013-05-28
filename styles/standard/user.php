@@ -47,7 +47,7 @@
 	<div class="box_container">
 		<div class="box_header">Allgemeine Informationen</div>
 		<div class="box_content">
-			<img src="http://www.woltlab.com/forum/wcf/icon/teamM.png" style="vertical-align: middle;"> <?=template::getVar('RANK'); ?>	<?php if (template::getVar('RANK_ICON')): ?><br /><img src="images/ranks/<?=template::getVar('RANK_ICON'); ?>" border="0" /><?php endif; ?><br />
+			<img src="http://www.woltlab.com/forum/wcf/icon/teamM.png" style="vertical-align: middle;"> <?=template::getVar('RANK'); ?>	<?php if (template::getVar('RANK_ICON')): ?><img src="images/ranks/<?=template::getVar('RANK_ICON'); ?>" border="0" /><?php endif; ?><br />
 			<img src="http://www.woltlab.com/forum/wcf/icon/registerM.png" style="vertical-align: middle;"> Registriert seid <?=template::getVar('REGISTER'); ?><br />
 			<img src="http://www.woltlab.com/forum/icon/postM.png" style="vertical-align: middle;"> <?=template::getVar('POSTS'); ?> Beitr&auml;ge (<?=template::getVar('PRODAY'); ?> Beiträge pro Tag)<br />
 			<img src="http://www.woltlab.com/forum/wcf/icon/offlineM.png" style="vertical-align: middle;"> Zuletzt online <?=template::getVar('LAST_VISIT'); ?><br />

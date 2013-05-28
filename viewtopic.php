@@ -31,8 +31,8 @@
 		(($user->row) ? '
 			SELECT t.*, f.*, tr.mark_time, fr.mark_time as forum_mark_time
 			FROM ' . TOPICS_TABLE . ' t
-				LEFT JOIN ' . TOPICS_TRACK_TABLE . ' tr ON tr.topic_id = t.topic_id AND tr.user_id = ' . $user->row['user_id'] . '
-				LEFT JOIN ' . FORUMS_TRACK_TABLE . ' fr ON fr.forum_id = t.forum_id AND fr.user_id = ' . $user->row['user_id'] . '
+				LEFT JOIN ' . TOPICS_TRACK_TABLE . ' tr ON tr.topic_id = t.topic_id AND tr.user_id = ' . (int)$user->row['user_id'] . '
+				LEFT JOIN ' . FORUMS_TRACK_TABLE . ' fr ON fr.forum_id = t.forum_id AND fr.user_id = ' . (int)$user->row['user_id'] . '
 		' : '
 			SELECT t.*, f.*
 			FROM ' . TOPICS_TABLE . ' t
@@ -55,20 +55,12 @@
 
 	if ($user->row) {
 		if (isset($_GET['delete'])) {
-			// include 'lib/functions/topic.php';
-
-			functions::topic()->delete_topic_post($_GET['delete']);
+			functions::topic()->delete_topic_post((int)$_GET['delete']);
 		} else if (isset($_POST['option'])) {
-			// include 'lib/functions/topic.php';
-
 			functions::topic()->poll_vote($row, $_POST['option']);
 		} else if (isset($_GET['close'])) {
-			// include 'lib/functions/topic.php';
-
 			functions::topic()->close_topic($row);
 		} else if (isset($_GET['important'])) {
-			// include 'lib/functions/topic.php';
-
 			functions::topic()->important_topic($row);
 		}
 	}

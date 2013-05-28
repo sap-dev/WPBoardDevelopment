@@ -4,5 +4,5 @@
 	$password = "";
 	$database = "test";
 	$prefix = "board_";
-	$uniqID = "51873f31940ba";
+	$uniqID = "51a4a0ccc4f51";
 ?>

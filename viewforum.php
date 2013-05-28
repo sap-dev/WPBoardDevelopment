@@ -52,7 +52,7 @@
 			$orderby = 't.topic_views DESC,';
 		break;
 		default:
-			$orderby = '';
+			$orderby = 't.topic_id,';
 		break;
 	}
 	

@@ -3,14 +3,14 @@
 		* @author WPBoard
 		* @copyright 2013 WPBoard
 		* @package com.wpboard.plugin
-		* @category Core
-		* @file plugin.php
+		* @category Style
+		* @file functions.php
 	*/
 
 	abstract class standard {
 		public static function menu() {
 			global $db, $user;
-			$res2 = $db->query('SELECT * FROM board_menu');
+			$res2 = $db->query('SELECT * FROM '. PREFIX .'menu');
 			$i = 0;
 			while ($row = $db->fetch_array($res2)) {
 				$i++;
@@ -41,7 +41,7 @@
 		}
 		public static function languageChoiser() {
 			global $db, $user;
-			$res2 = $db->query('SELECT * FROM board_languages');
+			$res2 = $db->query('SELECT * FROM '. PREFIX .'languages');
 			$i = 0;
 			echo '<ul style="float: right;"><li>';
 			while ($row = $db->fetch_array($res2)) {
