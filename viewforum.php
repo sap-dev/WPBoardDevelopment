@@ -1,21 +1,18 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.forum.viewforum
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Core
+		* @file viewforum.php
 	*/
 
 	require 'base.php';
 
 	if ($user->row) {
 		if (isset($_GET['delete'])) {
-			// include 'lib/functions/topic.php';
-
 			functions::topic()->delete_topic_post($_GET['delete']);
 		} else if (isset($_GET['mark'])) {
-			// include 'lib/functions/topic.php';
-
 			functions::topic()->mark_forum($_GET['id']);
 		}
 	}
@@ -100,6 +97,9 @@
 		$tRes = $db->query("SELECT * FROM " . POSTS_TABLE . " WHERE topic_id = '" . $row2['topic_id'] . "' ORDER by post_time ASC");
 		$row44 = $db->fetch_array($tRes);
 		
+		$aRes = $db->query("SELECT * FROM " . ATTACHEMENTS_TABLE . " WHERE att_post = '" . $row44['post_id'] . "'");
+		$arow = $db->fetch_array($aRes);
+		
 		$lRes = $db->query("SELECT * FROM " . LABEL_TABLE . " WHERE label_id = '" . $row2['topic_label'] . "'");
 		$label = $db->fetch_array($lRes);
 		
@@ -115,6 +115,7 @@
 			'TIME'					=>	date('d.m.y H:i', $row2['topic_time']),
 			'USERNAME'				=>	$row2['username'],
 			'USER_ID'				=>	$row2['user_id'],
+			'ATTACH'				=>	$arow['att_file'],
 			'LABEL'					=>	$labela,
 			'LABEL_EXIST'			=>	$row2['topic_label'],
 			'USER_LEGEND'			=>	$user->legend($row2['user_level']),
