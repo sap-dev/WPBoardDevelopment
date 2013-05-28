@@ -118,7 +118,7 @@
 			'ATTACH'				=>	$arow['att_file'],
 			'LABEL'					=>	$labela,
 			'FIRST_POST'			=>	$row44['post_id'],
-			'LABEL_EXIST'			=>	$row2['topic_label'],
+			'LABEL_EXIST'			=>	($row2['topic_label'] > 0) ? $row2['topic_label'] : '',
 			'USER_LEGEND'			=>	$user->legend($row2['user_level']),
 			'LAST_POST_TIME'		=>	date('d.m.y H:i', $row2['topic_last_post_time']),
 			'LAST_POST_USER_LEGEND'	=>	$user->legend($row2['topic_last_post_user_level']),

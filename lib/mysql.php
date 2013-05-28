@@ -29,9 +29,7 @@
 					<div class="title"><h2>SQL-Error</h2></div>
 
 					<div class="error MySQL">
-						' . mysql_error() . '
-<br><br>
-'.$sql.'
+						Es ist ein MySQL Fehler aufgetreten - der Administrator wurden informiert! Bitte versuchen Sie es nocheinmal
 					</div>
 				</div>
 			');

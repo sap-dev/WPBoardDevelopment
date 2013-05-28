@@ -57,7 +57,7 @@
 			</div>
 
 			<div class="content">
-				<select name="label"><?=template::getVar('LABELS');?></select>
+				<select name="label"><option value="0"></option><?=template::getVar('LABELS');?></select>
 			</div>
 
 			<div class="clear"></div>

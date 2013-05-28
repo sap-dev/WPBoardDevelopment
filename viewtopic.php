@@ -243,7 +243,7 @@
 		'FORUM_ID'			=>	$row['forum_id'],
 		'FORUM_NAME'		=>	$row['forum_name'],
 		'LABEL'				=>	$labela,
-		'LABEL_EXIST'		=>	$row['topic_label'],
+		'LABEL_EXIST'		=>	($row['topic_label'] > 0) ? $row['topic_label'] : '',
 		'FORUM_CLOSED'		=>	$row['forum_closed'],
 		'TOPIC_ID'			=>	$row['topic_id'],
 		'TOPIC_TITLE'		=>	htmlspecialchars($row['topic_title']),
