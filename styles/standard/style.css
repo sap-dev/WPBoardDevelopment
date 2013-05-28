@@ -1215,12 +1215,28 @@ border: 0;
 
 }
 .menu_topics {
-    background: url(http://i.imagebanana.com/img/pustmdz8/bg.png);
+    	background: #fff;
+				background: -moz-linear-gradient(top,  #eeeeee 0%, #ffffff 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#ffffff));
+				background: -webkit-linear-gradient(top,  #eeeeee 0%,#ffffff 100%);
+				background: -o-linear-gradient(top,  #eeeeee 0%,#ffffff 100%);
+				background: -ms-linear-gradient(top,  #eeeeee 0%,#ffffff 100%);
+				background: linear-gradient(to bottom,  #eeeeee 0%,#ffffff 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 );
+				box-shadow: inset 0px 1px 0px #e0e0e0, inset 0px 2px 0px #fff;
     border: 1px solid #000000;
     color: #000000;
     padding: 4px;
-    width: 90px;
-    text-align: center;
+    width: 150px;
+    text-align: left;
+	position: absolute; 
+	z-index: 99; 
+	display: none;
+}
+
+.menu_topics a {
+	color: #000000;
+	margin: 6px;
 }
 
 .info2 {

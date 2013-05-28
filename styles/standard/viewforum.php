@@ -124,6 +124,16 @@
 						<?php endif; ?>
 
 							<img src="styles/standard/images/icons/topics/<?=$topic['ICON']; ?>topic.png" border="0" onClick=" $('#menu_<?=$topic['ID'];?>').slideToggle();" />
+							<div id="menu_<?=$topic['ID'];?>" class="menu_topics">
+								<?php if ($user->row): ?>
+									<?php if (template::getVar('IS_MOD')): ?>
+										<a href="movetopic.php?id=<?=$topic['ID']; ?>"><img src="http://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/move_16x16.gif"> <?=template::getLanguage($config['selected_language'],'move');?></a><br />
+										<a href="newtopic.php?edit=1&id=<?=$topic['FIRST_POST']; ?>"><img src="http://cdn2.iconfinder.com/data/icons/diagona/icon/16/018.png"> <?=template::getLanguage($config['selected_language'],'edit');?></a><br />
+										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&important=1"><img src="http://cdn2.iconfinder.com/data/icons/fugue/icon/pin.png"> <?php if ($topic['ICON']=="info"): ?><?=template::getLanguage($config['selected_language'],'un');?><?php endif; ?><?=template::getLanguage($config['selected_language'],'important');?></a><br />
+										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&close=1"><img src="http://cdn2.iconfinder.com/data/icons/Siena/16/lock%20yellow.png"> <?php if ($topic['ICON']=="closed"): ?><?=template::getLanguage($config['selected_language'],'thread_open');?><?php else: ?><?=template::getLanguage($config['selected_language'],'thread_close');?><?php endif; ?></a>
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
 							</td>
 
 						<td width="35%">
@@ -150,18 +160,7 @@
 								<small class="grey"><?=$topic['TIME']; ?> Uhr</small>
 							</span>
 						</td><td width="200">
-							<div id="menu_<?=$topic['ID'];?>" class="menu_topics" style="display: none;">
-								<?php if ($user->row): ?>
-							<?php if (template::getVar('IS_MOD')): ?>
-								<a href="movetopic.php?id=<?=$topic['ID']; ?>"><img src="http://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/move_16x16.gif" title="Verschieben"></a>
-								<a href="viewtopic.php?id=<?=$topic['ID']; ?>&important=1"><img src="http://cdn2.iconfinder.com/data/icons/fugue/icon/pin.png" title="<?php if (template::getVar('TOPIC_IMPORTANT')): ?>un<?php endif; ?>wichtig markieren"></a>
-								<a href="viewtopic.php?id=<?=$topic['ID']; ?>&close=1"><img src="http://cdn2.iconfinder.com/data/icons/Siena/16/lock%20yellow.png" title="<?php if (template::getVar('TOPIC_CLOSED')): ?>öffnen<?php else: ?>schlie&szlig;en<?php endif; ?>"></a>
-								
-							<?php endif; ?>
-
 							
-							<?php endif; ?>
-							</div>
 
 						</td>
 						<td><a href="#" onClick="$('#topic_text_<?=$topic['ID']; ?>').show();"><img src="http://cdn2.iconfinder.com/data/icons/humano2/16x16/actions/old-edit-find.png"></a></td>
