@@ -164,7 +164,9 @@
 
 			<?php endforeach; ?>
 </div>
-
+<?php if (template::getVar('PAGES_NUM') > 1): ?>
+<?=template::getVar('PAGES'); ?><br />
+<?php endif; ?>
 <br />
 
 <div id="lastposter" style="width: 100%; padding: 10px;">
