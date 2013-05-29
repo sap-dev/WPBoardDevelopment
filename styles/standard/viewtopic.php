@@ -137,7 +137,7 @@
 				<td></td>
 				<td>
 				<div style="position: relative; float: left;margin-left: 0px;">
-							<div id="lastposter" style="width: 150px; text-align: center;"><?=$posts['TIME'];?> Uhr</div>
+							<div id="lastposter" style="width: 150px; text-align: center;">vor <?=$posts['TIME'];?></div>
 						</div>
 				<div style="position: relative; float: right;margin-right: 0px;">
 							<div id="lastposter" style="width: 18px; text-align: center;">#<?=$posts['POSTS_NUM'];?></div>

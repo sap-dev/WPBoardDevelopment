@@ -108,7 +108,7 @@
 				'TOPICS'					=>	number_format($row['forum_topics'], 0, '', '.'),
 				'POSTS'						=>	number_format($row['forum_posts'], 0, '', '.'),
 				'DESCRIPTION'				=>	$row['forum_description'],
-				'LAST_POST_TIME'			=>	date('d.m.y H:i', $row['forum_last_post_time']),
+				'LAST_POST_TIME'			=>	time_ago($row['forum_last_post_time']),
 				'LAST_POST_USER_LEGEND'		=>	$user->legend($row['forum_last_post_user_level']),
 				'LAST_POST_ID'				=>	$row['forum_last_post_id'],
 				'LAST_POST_USER_ID'			=>	$row['forum_last_post_user_id'],

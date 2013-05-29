@@ -52,7 +52,7 @@
 			$orderby = 't.topic_views DESC,';
 		break;
 		default:
-			$orderby = 't.topic_id,';
+			$orderby = 't.topic_time DESC,';
 		break;
 	}
 	
@@ -112,7 +112,7 @@
 			'ICON'					=>	($row2['topic_important'] ? 'info' : ($row2['topic_closed'] ? 'closed' : '')) . (($row2['new']) ? 'new' : ''),
 			'POSTS'					=>	number_format($row2['topic_posts'], 0, '', '.'),
 			'VIEWS'					=>	number_format($row2['topic_views'], 0, '', '.'),
-			'TIME'					=>	date('d.m.y H:i', $row2['topic_time']),
+			'TIME'					=>	time_ago($row2['topic_time']),
 			'USERNAME'				=>	$row2['username'],
 			'USER_ID'				=>	$row2['user_id'],
 			'ATTACH'				=>	$arow['att_file'],
@@ -120,7 +120,7 @@
 			'FIRST_POST'			=>	$row44['post_id'],
 			'LABEL_EXIST'			=>	($row2['topic_label'] > 0) ? $row2['topic_label'] : '',
 			'USER_LEGEND'			=>	$user->legend($row2['user_level']),
-			'LAST_POST_TIME'		=>	date('d.m.y H:i', $row2['topic_last_post_time']),
+			'LAST_POST_TIME'		=>	time_ago($row2['topic_last_post_time']),
 			'LAST_POST_USER_LEGEND'	=>	$user->legend($row2['topic_last_post_user_level']),
 			'LAST_POST_USER_ID'		=>	$row2['topic_last_post_user_id'],
 			'LAST_POST_USERNAME'	=>	$row2['topic_last_post_username'],

@@ -34,7 +34,7 @@
 				}
 			}
 			if ($user->row['user_level'] == ADMIN) {
-				echo '<li><a href="./admin"><img border="0" src="http://cdn2.iconfinder.com/data/icons/gnomeicontheme/24x24/actions/gtk-edit.png" style="vertical-align:middle;"> Administration</a></li>';
+				echo '<li><a href="./admin"><img border="0" src="images/admin.png" style="vertical-align:middle;"> Administration</a></li>';
 			}
 
 

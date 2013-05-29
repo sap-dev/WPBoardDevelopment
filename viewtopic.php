@@ -9,7 +9,6 @@
 
 	require 'base.php';
 
-	
 	if($_GET['downloadAttachement']) {
 		$res = $db->query("SELECT *	FROM " . ATTACHEMENTS_TABLE . " WHERE att_id = '".(int)$_GET['downloadAttachement']."'");
 		$row = $db->fetch_array($res);
@@ -194,11 +193,14 @@
 		));
 	}
 
+	
+
+
 
 		$post_num++;
 		template::assignBlock('posts', array(
 			'ID'			=>	$row2['post_id'],
-			'TIME'			=>	date('d.m.y H:i', $row2['post_time']),
+			'TIME'			=>	time_ago($row2['post_time']),
 			'USER_REGISTER'	=>	date('d.m.y H:i', $row2['user_register']),
 			'TEXT'			=>	replace($row2['post_text'], $row2['enable_bbcodes'], $row2['enable_smilies'], $row2['enable_urls']),
 			'TRACK'			=>	($track_post == $row2['post_id']) ? 'post' : $row2['post_id'],

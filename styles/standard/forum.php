@@ -8,7 +8,7 @@
 	<?php foreach(template::$blocks['forums'] AS $forum): ?>
 		<?php if ($forum['IS_CATEGORY']): ?>
 			</div><br>
-			<h2 class="title"><img src="http://cdn2.iconfinder.com/data/icons/diagona/icon/16/129.png" style="vertical-align: middle;" onClick=" $('#cat_<?=$forum['ID'];?>').slideToggle();">
+			<h2 class="title"><img src="images/plus.png" style="vertical-align: middle;" onClick=" $('#cat_<?=$forum['ID'];?>').slideToggle();">
 			&nbsp;<?=$forum['NAME']; ?></h2>
 			<div id="cat_<?=$forum['ID'];?>"> 
 			<?php else: ?>
@@ -24,10 +24,10 @@
 								<a class="forum" href="viewforum.php?id=<?=$forum['ID']; ?>" width="50%">
 									<?=$forum['NAME']; ?>
 									<? if($forum['LEVEL']==3): ?>
-										<img style="margin-right: 1px; vertical-align: middle;" src="http://cdn1.iconfinder.com/data/icons/silk2/lock.png" title="<?=template::getLanguage($config['selected_language'],'only_admin');?>">
+										<img style="margin-right: 1px; vertical-align: middle;" src="images/lock.png" title="<?=template::getLanguage($config['selected_language'],'only_admin');?>">
 									<? endif; ?>
 									<? if($forum['LEVEL']==2): ?>
-										<img style="margin-right: 1px;  vertical-align: middle;" src="http://cdn1.iconfinder.com/data/icons/silk2/lock.png" title="<?=template::getLanguage($config['selected_language'],'only_mod');?>">
+										<img style="margin-right: 1px;  vertical-align: middle;" src="images/lock.png" title="<?=template::getLanguage($config['selected_language'],'only_mod');?>">
 									<? endif; ?>
 								</a>
 							</h3>
@@ -73,7 +73,7 @@
 									<span><?=template::getLanguage($config['selected_language'],'unknown');?></span>
 								<?php endif; ?>
 								<span>
-									<small class="grey">&nbsp; - &nbsp;<?=$forum['LAST_POST_TIME']; ?> <?=template::getLanguage($config['selected_language'],'clock');?></small>
+									<small class="grey">&nbsp; - &nbsp;vor <?=$forum['LAST_POST_TIME']; ?></small>
 								</span>
 							<?php else: ?>
 								<div id="lastposter" style="height: 37px;"><center><small class="grey"><?=template::getLanguage($config['selected_language'],'nopost');?></small></center></div>
@@ -93,7 +93,7 @@
 
 <table width="100%">
 	<tr>
-		<td width="60"><img src="http://cdn4.iconfinder.com/data/icons/pretty_office_3/48/Male-User-Help.png"></td>
+		<td width="60"><img src="images/online.png"></td>
 		<td>
 			<?=template::getLanguage($config['selected_language'],'legend');?>: <font color="#26677f"><?=template::getLanguage($config['selected_language'],'admin');?></font>, <font color="#3eb289"><?=template::getLanguage($config['selected_language'],'mod');?></font>, <font color="#aaaaaa"><?=template::getLanguage($config['selected_language'],'bot');?></font>
 			<br /><?=template::getLanguage($config['selected_language'],'user');?>:
@@ -121,7 +121,7 @@
 
 <table class="form" width="100%">
 	<tr>
-		<td width="60"><img src="http://cdn5.iconfinder.com/data/icons/48_px_web_icons/48/Statistics.png"></td>
+		<td width="60"><img src="images/Statistics.png"></td>
 		<td class="inhalt">
 
 			<?=template::getVar('USERS'); ?> <?=template::getLanguage($config['selected_language'],'user');?> - <?=template::getVar('TOPICS'); ?> <?=template::getLanguage($config['selected_language'],'threads');?> - <?=template::getVar('POSTS'); ?> <?=template::getLanguage($config['selected_language'],'posts');?>

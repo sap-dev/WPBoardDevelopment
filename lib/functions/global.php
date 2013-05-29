@@ -213,6 +213,33 @@
 
 		return $text;
 	}
+	
+	function time_ago($ptime) {
+    $etime = time() - $ptime;
+
+    if ($etime < 1)
+    {
+        return '0 seconds';
+    }
+
+    $a = array( 12 * 30 * 24 * 60 * 60  =>  'Jahre',
+                30 * 24 * 60 * 60       =>  'Monate',
+                24 * 60 * 60            =>  'Tage',
+                60 * 60                 =>  'Stunde',
+                60                      =>  'Minute',
+                1                       =>  'Sekunde'
+                );
+
+    foreach ($a as $secs => $str)
+    {
+        $d = $etime / $secs;
+        if ($d >= 1)
+        {
+            $r = round($d);
+            return $r . ' ' . $str . ($r > 1 ? 'n' : '') . '';
+        }
+    }
+}
 
 	function usernameCheck($before, $username, $after) {
 		global $db;

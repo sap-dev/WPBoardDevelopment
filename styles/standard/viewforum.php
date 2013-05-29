@@ -83,7 +83,7 @@
 										<br />
 
 										<span>
-											<small class="grey">'.$s['LAST_POST_TIME'].' Uhr</small>
+											<small class="grey">vor '.$s['LAST_POST_TIME'].'</small>
 										</span>
 									';
 								else:
@@ -157,7 +157,7 @@
 							<? endif; ?>
 							<br />
 							<span>
-								<small class="grey"><?=$topic['TIME']; ?> Uhr</small>
+								<small class="grey">vor <?=$topic['TIME']; ?></small>
 							</span>
 						</td><td width="200">
 							
@@ -192,7 +192,7 @@
 								<img src="./styles/standard/images/neubeitrag.gif" border="0" title="Letzter Beitrag" />
 							</a><br />
 
-							<span><small class="grey"><?=$topic['LAST_POST_TIME']; ?> Uhr</small></span>
+							<span><small class="grey">vor <?=$topic['LAST_POST_TIME']; ?></small></span>
 							</div>
 </div>
 							</div>

@@ -139,8 +139,8 @@
 		
 		mysql_unbuffered_query("
 		INSERT INTO `" . $prefix . "languages` (`lang_id`, `lang_code`, `lang_icon`, `lang_name`) VALUES
-			(1, 'de', 'http://cdn1.iconfinder.com/data/icons/famfamfam_flag_icons/de.png', 'Deutsch'),
-			(2, 'en', 'http://cdn1.iconfinder.com/data/icons/sweet-16s/16/england.png', 'English');
+			(1, 'de', 'images/de.png', 'Deutsch'),
+			(2, 'en', 'images/en.png', 'English');
 		");
 		
 				
@@ -591,9 +591,9 @@
 			
 		mysql_unbuffered_query("
 			INSERT INTO `" . $prefix . "menu` (`menu_id`, `menu_link`, `menu_text`, `menu_icon`) VALUES
-				(1, 'index', 'Startseite', 'http://www.woltlab.com/forum/wcf/icon/websiteM.png'),
-				(2, 'forum', 'Forum', 'http://cdn4.iconfinder.com/data/icons/Hypic_Icon_Pack_by_shlyapnikova/16/forum_16.png'),
-				(3, 'memberlist', 'Mitglieder', 'http://cdn3.iconfinder.com/data/icons/humano2/24x24/emblems/emblem-people.png');
+				(1, 'index', 'Startseite', 'images/website.png'),
+				(2, 'forum', 'Forum', 'images/forum.png'),
+				(3, 'memberlist', 'Mitglieder', 'images/user.png');
 		");
 		
 		mysql_unbuffered_query("

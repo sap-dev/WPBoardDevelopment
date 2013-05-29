@@ -1,5 +1,5 @@
 body {
-	background: url(http://i.imagebanana.com/img/pustmdz8/bg.png) #ffffff repeat-x;
+	background: url(../../images/bg.png) #ffffff repeat-x;
 	background-size:55px;
 	font-family: Segoe UI, Helvetica, Verdana, Tahoma, Arial, Ubuntu;
 	font-size: 13px;
@@ -76,7 +76,7 @@ a, a:hover, input, input:hover, input:focus, input:active, .tdMore, .tdMore:hove
 
 		#user_wrap ul li {
 			display: inline-block;
-			background: url(http://www.woltlab.com/forum/wcf/images/WoltLab%20Blue%20Sunrise/userPanel.png);
+			background: url(../../images/userPanel.png);
 		
 		}
 
@@ -104,15 +104,15 @@ a, a:hover, input, input:hover, input:focus, input:active, .tdMore, .tdMore:hove
 				}
 
 				#user_wrap ul li.settings a {
-					background-image: url(http://www.woltlab.com/forum/wcf/icon/editM.png);
+					background-image: url(../../images/edit.png);
 				}
 
 				#user_wrap ul li.mail a {
-					background-image: url(http://www.woltlab.com/forum/wcf/icon/mailM.png);
+					background-image: url(../../images/mail.png);
 				}
 
 				#user_wrap ul li.logout a {
-					background-image: url(http://www.woltlab.com/forum/wcf/icon/logoutM.png);
+					background-image: url(../../images/logout.png);
 				
 					background-position: 15px 8.5px;
 				}
@@ -1210,7 +1210,7 @@ border: 0;
 	border: 1px #000000 solid;
 	padding: 5px;
 	width: 50%;
-		background: url(http://i.imagebanana.com/img/pustmdz8/bg.png);
+		background: url(../../images/bg.png);
 		
 
 }
