@@ -31,6 +31,7 @@
 	define('BANLIST_TABLE', $prefix . 'banlist');
 	define('PLUGINS_TABLE', $prefix . 'plugins');
 	define('LANGUAGE_TABLE', $prefix . 'language');
+	define('LANGUAGES_TABLE', $prefix . 'languages');
 	define('SERVER_TABLE', $prefix . 'plugin_server');
 	define('STYLES_TABLE', $prefix . 'styles');
 	define('LABEL_TABLE', $prefix . 'label');

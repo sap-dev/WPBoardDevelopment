@@ -167,6 +167,19 @@
 			}
 			return $row['lang_translate'];
 		}
+		
+		public static function existLanguage($lang) {
+			global $db, $config;
+			$res = $db->query("
+				SELECT *
+				FROM " . LANGUAGES_TABLE . "
+				WHERE lang_code = '".$lang."'"
+			);
+
+			$row = $db->fetch_array($res);
+			return $row['lang_name'];
+		}
+
 
 		/**
 		 *	@name 	getVar

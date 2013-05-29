@@ -123,4 +123,7 @@
 			}
 		}
 	}	
+	if(!template::existLanguage($config['selected_language'])) {
+		$config['selected_language'] = 'de';
+	}
 ?>
