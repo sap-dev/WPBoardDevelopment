@@ -1,11 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.plugins
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugin.php
 	*/
-
+	
 	require 'plugin.interface.php';
 
 	abstract class plugin implements pluginInterface {

@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.topic
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.topic.php
 	*/
-
-	namespace Itschi\lib\functions;
+	
+	namespace WPBoard\lib\functions;
 
 	class topic extends \functions {
 		public function mark_forum($forum_id = false) {

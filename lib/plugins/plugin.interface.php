@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.plugins.interfaces.plugin
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugin.interface.php
 	*/
 
 	interface pluginInterface {

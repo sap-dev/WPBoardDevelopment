@@ -7,7 +7,7 @@
 		* @file base.php
 	*/
 
-	use \Itschi\lib as lib;
+	use \WPBoard\lib as lib;
 	session_start();
 
 	error_reporting(E_ALL & ~E_NOTICE);

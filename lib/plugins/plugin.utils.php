@@ -1,14 +1,10 @@
 <?php
 	/**
-	*
-	* 	@package com.Itschi.base.plugins.utils
-	* 	@since 2013/02/06
-	*
-	*	DO NOT MODIFY ANY OF THESE FUNCTIONS.
-	*	These functions are essential for the use of plugins.
-	*	Editing may cause your cat to be eaten by your subwoofer
-	*	or serious frozen air around your head.
-	*	It may also cause headaches.
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugin.utils.php
 	*/
 
 	// TMP CHARSET

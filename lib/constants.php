@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.constants
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Constants
+		* @file constants.php
 	*/
 
 	define('VERSION', '1.0.0 Pre-Alpha 1');

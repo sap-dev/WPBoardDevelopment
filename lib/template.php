@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.template
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Style
+		* @file template.php
 	*/
 
 	abstract class template {

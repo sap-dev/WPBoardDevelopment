@@ -2,12 +2,12 @@
 	/**
 		* @author WPBoard
 		* @copyright 2013 WPBoard
-		* @package com.wpboard.plugin
+		* @package com.wpboard.core
 		* @category Core
 		* @file mysql.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class mysql {
 		var $debug = false;

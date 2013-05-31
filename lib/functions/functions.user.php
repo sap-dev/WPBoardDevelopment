@@ -1,12 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.user
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.user.php
 	*/
-
-	namespace Itschi\lib\functions;
+	namespace WPBoard\lib\functions;
 
 	class user extends \functions {
 		public function valid_email($email) {

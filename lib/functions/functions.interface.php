@@ -1,11 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.interface
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.interface.php
 	*/
-
+	
 	interface functionsInterface {
 		public static function user();
 

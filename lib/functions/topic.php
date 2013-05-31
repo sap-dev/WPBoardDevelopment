@@ -1,11 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.topic
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file topic.php
 	*/
-
+	
+	
 	function mark_forum($forum_id = false) {
 		global $db, $user;
 

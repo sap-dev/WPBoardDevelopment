@@ -1,12 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.date
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.date.php
 	*/
-
-	namespace Itschi\lib\functions;
+	namespace WPBoard\lib\functions;
 
 	class date extends \functions {
 		public function timeDifference($date1, $date2, $whole = false) {

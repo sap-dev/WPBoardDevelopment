@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.global
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file global.php
 	*/
 
 	function page_vars() {
@@ -207,7 +208,7 @@
 			}
 
 			foreach ($smilies_cache as $row) {
-				$text = str_replace($row['smilie_emotion'], '<img src="images/smilies/' . $row['smilie_image'] . '" border="0" />', $text);
+				$text = str_replace($row['smilie_emotion'], '<img alt="smiley" src="images/smilies/' . $row['smilie_image'] . '" />', $text);
 			}
 		}
 

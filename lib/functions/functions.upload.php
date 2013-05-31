@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions.upload
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.upload.php
 	*/
-
-	namespace Itschi\lib\functions;
+	
+	namespace WPBoard\lib\functions;
 
 	class upload extends \functions {
 		function resize($path, $new_path, $new_width, $new_height, $cut) {

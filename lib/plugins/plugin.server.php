@@ -1,12 +1,13 @@
 <?php
 	/**
-	 *
-	 * @package com.Itschi.base.plugins.ACP
-	 * @since 2012/02/19
-	 *
-	 */
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugin.server.php
+	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class pluginServer {
 		public static function getPluginListURL($server_url) {

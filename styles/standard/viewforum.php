@@ -30,7 +30,7 @@
 			foreach (template::getVar('SUBFORUMS') as $s) {
 				echo '
 					<div class="item">
-						<table width="100%" border="0">
+						<table width="100%">
 							<tr>
 								<td class="center" width="6%">
 									<img src="./styles/standard/images/icons/topics/'.$s['forum_icon'].'.png">
@@ -78,7 +78,7 @@
 								
 									echo '
 										<a href="viewtopic.php?id='.$s['LAST_POST_TOPIC_ID'].'&p='.$s['LAST_POST_ID'].'#'.$s['LAST_POST_ID'].'">
-											<img title="neusten Beitrag anzeigen" border="0" src="./styles/standard/images/neubeitrag.gif" />
+											<img title="neusten Beitrag anzeigen" src="./styles/standard/images/neubeitrag.gif" />
 										</a>
 										<br />
 
@@ -111,35 +111,35 @@
 		<div id="topic_text_<?=$topic['ID'];?>" class="inline_div" style="z-index: 999; padding-right: 20px;">
 			<?=$topic['PREVIEW_TEXT']; ?>
 			<div style="position: absolute; top: 1px; right: 1px; padding: 5px;">
-				<a href="#" onClick="$('#topic_text_<?=$topic['ID'];?>').hide(); $('#dunkel').hide();"><img src="http://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/actions/button_cancel.png"></a>
+				<a href="#" onClick="$('#topic_text_<?=$topic['ID'];?>').hide(); $('#dunkel').hide();"><img src="images/deleteS.png"  alt="WPBoard-Image" /></a>
 			</div>
 		</div>
 			<div class="item">
-				<table class="form" width="100%">
+				<table class="forum_table">
 					<tr>
 						<?php if ($topic['NEW']): ?>
-							<td class="status unread center" width="6%">
+							<td class="forum_icon">
 						<?php else: ?>
-							<td class="status center" width="6%">
+							<td class="forum_icon">
 						<?php endif; ?>
 
-							<img src="styles/standard/images/icons/topics/<?=$topic['ICON']; ?>topic.png" border="0" onClick="$('#menu_<?=$topic['ID'];?>').slideToggle();" />
+							<img src="styles/standard/images/icons/topics/<?=$topic['ICON']; ?>topic.png" onClick="$('#menu_<?=$topic['ID'];?>').slideToggle();"  alt="WPBoard-Image" />
 							<div id="menu_<?=$topic['ID'];?>" class="menu_topics">
 								<?php if ($user->row): ?>
 									<?php if (template::getVar('IS_MOD')): ?>
-										<a href="movetopic.php?id=<?=$topic['ID']; ?>"><img src="http://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/move_16x16.gif"> <?=template::getLanguage($config['selected_language'],'move');?></a><br />
-										<a href="newtopic.php?edit=1&id=<?=$topic['FIRST_POST']; ?>"><img src="http://cdn2.iconfinder.com/data/icons/diagona/icon/16/018.png"> <?=template::getLanguage($config['selected_language'],'edit');?></a><br />
-										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&important=1"><img src="http://cdn2.iconfinder.com/data/icons/fugue/icon/pin.png"> <?php if ($topic['ICON']=="info"): ?><?=template::getLanguage($config['selected_language'],'un');?><?php endif; ?><?=template::getLanguage($config['selected_language'],'important');?></a><br />
-										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&close=1"><img src="http://cdn2.iconfinder.com/data/icons/Siena/16/lock%20yellow.png"> <?php if ($topic['ICON']=="closed"): ?><?=template::getLanguage($config['selected_language'],'thread_open');?><?php else: ?><?=template::getLanguage($config['selected_language'],'thread_close');?><?php endif; ?></a>
+										<a href="movetopic.php?id=<?=$topic['ID']; ?>"><img src="images/moveS.gif" alt="WPBoard-Image" /> <?=template::getLanguage($config['selected_language'],'move');?></a><br />
+										<a href="newtopic.php?edit=1&id=<?=$topic['FIRST_POST']; ?>"><img src="images/editS.png" alt="WPBoard-Image" /> <?=template::getLanguage($config['selected_language'],'edit');?></a><br />
+										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&important=1"><img src="images/pinS.png" alt="WPBoard-Image" /> <?php if ($topic['ICON']=="info"): ?><?=template::getLanguage($config['selected_language'],'un');?><?php endif; ?><?=template::getLanguage($config['selected_language'],'important');?></a><br />
+										<a href="viewtopic.php?id=<?=$topic['ID']; ?>&close=1"><img src="images/lockS.png" alt="WPBoard-Image" /> <?php if ($topic['ICON']=="closed"): ?><?=template::getLanguage($config['selected_language'],'thread_open');?><?php else: ?><?=template::getLanguage($config['selected_language'],'thread_close');?><?php endif; ?></a>
 									<?php endif; ?>
 								<?php endif; ?>
 							</div>
 							</td>
 
-						<td width="35%">
+						<td class="thread_35">
 							<?php if ($topic['NEW']): ?>
 								<? if($topic['LABEL_EXIST']): ?><?=$topic['LABEL'];?>&nbsp;<? endif; ?><a href="viewtopic.php?id=<?=$topic['ID']; ?>&view=track#post">
-									<img alt="Neuster ungelesener Beitrag" src="./styles/standard/images/neubeitrag.gif" border="0" />
+									<img alt="Neuster ungelesener Beitrag" src="./styles/standard/images/neubeitrag.gif" />
 								</a>
 							<?php endif; ?>
 
@@ -153,32 +153,33 @@
 							<?php endif; ?>
 							<?=$topic['PAGES']; ?>
 							<?php if($topic['ATTACH']): ?>
-								<img src="http://www.woltlab.com/forum/wcf/icon/attachmentS.png" style="vertical-align: middle;">
+								<img src="images/attachmentS.png" style="vertical-align: middle;" alt="WPBoard-Image" />
 							<? endif; ?>
 							<br />
 							<span>
 								<small class="grey">vor <?=$topic['TIME']; ?></small>
 							</span>
-						</td><td width="200">
+						</td>
+						<td class="thread_200">
 							
 
 						</td>
-						<td><a href="#" onClick="$('#topic_text_<?=$topic['ID']; ?>').show(); $('#dunkel').slideToggle();"><img src="http://cdn2.iconfinder.com/data/icons/humano2/16x16/actions/old-edit-find.png"></a></td>
+						<td><a href="#" onClick="$('#topic_text_<?=$topic['ID']; ?>').show(); $('#dunkel').slideToggle();"><img src="images/previewS.png" alt="WPBoard-Image" /></a></td>
 
-						<td class="center" width="10%">
+						<td class="thread_10">
 							<b style="font-size: 16px;"><?=$topic['POSTS']; ?></b><br />
 							<small class="grey">Beitr<?php if ($topic['POSTS'] == 1): ?>ag<?php else: ?>äge<?php endif; ?></small>
 						</td>
 
-						<td class="center" width="10%">
+						<td class="thread_10">
 							<b style="font-size: 16px;"><?=$topic['VIEWS']; ?></b><br />
 							<small class="grey">Besuch<?php if ($topic['VIEWS'] == 1): ?><?php else: ?>er<?php endif; ?></small>
 						</td>
 
-						<td width="22%" style="padding-left:10px">
-							<div id="lastposter" style="text-align: center; height: 37px;">
+						<td class="thread-22">
+							<div class="lastposter" style="text-align: center; height: 37px;">
 							<div style="float: left; width: 25%; text-align: center;">
-								<img src="./images/avatar/<?php if ($topic['LAST_POST_USER_AVATAR']): ?><?=$topic['LAST_POST_USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>" border="0" height="36" width="36" />
+								<img alt="WPBoard-Image" src="./images/avatar/<?php if ($topic['LAST_POST_USER_AVATAR']): ?><?=$topic['LAST_POST_USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>" height="36" width="36" />
 							</div>
 							<div style="float: right; width: 75%;">
 							von
@@ -188,14 +189,14 @@
 								<span>Unbekannt</span>
 							<?php endif; ?>&nbsp;
 
-							<a href="viewtopic.php?id=<?=$topic['ID']; ?>&p=<?=$topic['LAST_POST_ID']; ?>#<?=$topic['LAST_POST_ID']; ?>">
-								<img src="./styles/standard/images/neubeitrag.gif" border="0" title="Letzter Beitrag" />
+							<a href="viewtopic.php?id=<?=$topic['ID']; ?>&amp;p=<?=$topic['LAST_POST_ID']; ?>#<?=$topic['LAST_POST_ID']; ?>">
+								<img src="./styles/standard/images/neubeitrag.gif" title="Letzter Beitrag" alt="WPBoard-Image" />
 							</a><br />
 
 							<span><small class="grey">vor <?=$topic['LAST_POST_TIME']; ?></small></span>
 							</div>
 </div>
-							</div>
+	
 						</td>
 					</tr>
 				</table>
@@ -214,12 +215,12 @@
 
 <br /><br />
 
-<table width="100%">
+<table class="thread_bar">
 <tr>
-<td width="33%">
+<td class="thread_third">
 
 <div style="position: relative; float: left;margin-right: 0px;">
-							<div id="lastposter" style="width: 250px; text-align: center;">
+							<div class="lastposter" style="width: 250px; text-align: center;">
 								<form action="viewforum.php" method="GET">
 									<input type="hidden" name="id" value="<?=template::getVar('FORUM_ID'); ?>">
 									<select name="order" style="font-size: 10px;">
@@ -233,7 +234,7 @@
 						</div>
 
 </td>
-<td width="33%" align="center">
+<td class="thread_third center">
 <div class="fLeft" style="width: 59%;">
 
 	<?php if (template::getVar('PAGES_NUM') > 1): ?>
@@ -243,7 +244,7 @@
 	<?php endif; ?>
 </div>
 </td>
-<td width="33%">
+<td class="thread_third">
 <div class="fRight" style="width: 39%; text-align: right;">
 
 	&nbsp;

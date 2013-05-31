@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.plugins.ACP
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugins.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class plugins {
 		/**

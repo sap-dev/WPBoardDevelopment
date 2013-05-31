@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.styles.ACP
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Style
+		* @file styles.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class styles {
 		public $styles = array();

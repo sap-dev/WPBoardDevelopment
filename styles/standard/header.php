@@ -63,7 +63,7 @@
 					</li>
 				<?php } ?>
 
-				<div class="clear"></div>
+				
 			</ul>
 		</div>
 
@@ -85,10 +85,8 @@
 					<li><a class="last"></a></li>
 				</ul>
 				<?=standard::languageChoiser(); ?>
-				<div class="clear"></div>
+				
 			</nav>
 		</div>
-
-		<div class="clear"></div>
 
 		<section id="content">

@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package Itschi
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Core
+		* @file memberlist.php
 	*/
 
 	require 'base.php';
@@ -12,7 +13,7 @@
 	$page = (isset($_GET['page'])) ? max($_GET['page'], 1) : 1;
 	$mode = ($_GET['mode'] == 'team') ? 'team' : '';
 
-	$perpage = 15;
+	$perpage = 10;
 	$query = '';
 
 	if ($mode == 'team' && !$char) {

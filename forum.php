@@ -76,11 +76,13 @@
 			WHERE forum_level = 0 AND forum_toplevel = 0
 			ORDER BY forum_order
 	');
-
+	$ii = 0;
 	while ($row = $db->fetch_array($res)) {
+		$ii++;
 		$forum = array(
 			'NAME'		=>	$row['forum_name'],
 			'ID'		=>	$row['forum_id'],
+			'II'		=>	$ii,
 			'IS_CATEGORY'	=>	$row['is_category']
 		);
 

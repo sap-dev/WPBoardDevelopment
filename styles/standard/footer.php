@@ -1,18 +1,14 @@
 				<?php template::displayArea('underneathContent'); ?>
 			</section>
 			
-			<div class="clear"></div>
-		</div>
-		</div>
 		<br /><br />
-			<center>
+		
 		<div id="copyright">
-			Forensoftware: Web Power Board <?= VERSION; ?></li>
+			Forensoftware: Web Power Board <?= VERSION; ?>
 		</div>
-			</center>
-
-
-			<?php template::displayArea('footer'); ?>
-			<div id="dunkel"></div>
+		
+		<?php template::displayArea('footer'); ?>
+		
+		<div id="dunkel"></div>
 	</body>
 </html>

@@ -20,7 +20,7 @@
 					);
 					
 					echo '
-						<li><a href="./'.$row['menu_link'].'.php" '.((in_array(template::getPage(), $forumPages)) ? 'class="active"' : '').'><img border="0" src="'.$row['menu_icon'].'" style="vertical-align:middle;"> '.$row['menu_text'].'</a></li>
+						<li><a href="./'.$row['menu_link'].'.php" '.((in_array(template::getPage(), $forumPages)) ? 'class="active"' : '').'><img alt="WPBoard-Image" src="'.$row['menu_icon'].'" style="vertical-align: middle;" /> '.$row['menu_text'].'</a></li>
 					';
 				} else {
 					if($i == 1) {
@@ -29,12 +29,12 @@
 						$class = 'active';
 					}
 					echo '
-						<li><a href="./'.$row['menu_link'].'.php" '.((template::getPage() == $row['menu_link']) ? 'class="'.$class.'"' : '').'><img border="0" src="'.$row['menu_icon'].'" style="vertical-align:middle;"> '.$row['menu_text'].'</a></li>
+						<li><a href="./'.$row['menu_link'].'.php" '.((template::getPage() == $row['menu_link']) ? 'class="'.$class.'"' : '').'><img alt="WPBoard-Image" src="'.$row['menu_icon'].'" style="vertical-align: middle;" /> '.$row['menu_text'].'</a></li>
 					';
 				}
 			}
 			if ($user->row['user_level'] == ADMIN) {
-				echo '<li><a href="./admin"><img border="0" src="images/admin.png" style="vertical-align:middle;"> Administration</a></li>';
+				echo '<li><a href="./admin"><img alt="WPBoard-Image" src="images/admin.png" style="vertical-align: middle;" /> Administration</a></li>';
 			}
 
 
@@ -46,7 +46,7 @@
 			echo '<ul style="float: right;"><li>';
 			while ($row = $db->fetch_array($res2)) {
 				$i++;
-					echo '<a href="forum.php?lang='.$row['lang_code'].'" style="padding-right: 5px; margin-right: 5px; padding-left: 5px; margin-left: 5px; border-right: 0px;"><img border="0" src="'.$row['lang_icon'].'" style="vertical-align:middle;"></a>';
+					echo '<a href="forum.php?lang='.$row['lang_code'].'" style="padding-right: 5px; margin-right: 5px; padding-left: 5px; margin-left: 5px; border-right: 0px;"><img alt="WPBoard-Image" src="'.$row['lang_icon'].'" style="vertical-align: middle;" /></a>';
 			}
 			echo '</li></ul>';
 		}

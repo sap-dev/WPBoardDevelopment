@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.functions
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file functions.php
 	*/
 
-	use \Itschi\lib\functions as f;
+	use \WPBoard\lib\functions as f;
 
 	require_once 'functions.interface.php';
 

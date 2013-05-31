@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.token
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Classes
+		* @file token.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class token {
 		public $token = null;
@@ -90,15 +91,13 @@
 				$parameter = explode('?', $link);
 				$file = current($parameter);
 				unset($parameter[0]);
-
-				// $file = str_replace('./', '', $file);
-
+				
 				if ($this->check_exception(str_replace('./', '', $file), 'GET', $this->env)) {
 					return $matches[0];
 				}
 
 				if (count($parameter) >= 1) {
-					$parameter = '?'.implode('', $parameter).'&'.$this->token_name.'='.$this->token;
+					$parameter = '?'.implode('', $parameter).'&amp;'.$this->token_name.'='.$this->token;
 				} else {
 					$parameter = '';
 				}

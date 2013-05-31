@@ -1160,7 +1160,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', end
 			display: block;
 		}
 
-#lastposter {
+.lastposter {
 	background: #EEEEEE;
 	padding: 6px;
 	-moz-border-radius: 10px;
@@ -1206,6 +1206,7 @@ border: 0;
 
 #copyright {
 	text-align: center;
+	margin: 0 auto;
 	color: #000000;
 	border: 1px #000000 solid;
 	padding: 5px;
@@ -1361,3 +1362,49 @@ color:#fff;
 z-index:97;
 top:0;
 left:0; }
+
+.forum_lastpost {
+	width: 30%;
+}
+.forum_stat {
+	width: 12%;
+	text-align: center;
+}
+.forum_icon {
+	width: 6%;
+}
+.forum_table {
+	width: 100%;
+}
+.forum_name {
+	width: 52%;
+}
+.inhalt_icon {
+	width: 60px;
+}
+.thread_10{
+	width: 10%;
+	text-align: center;
+}
+.thread_200{
+	width: 200px;
+}
+.thread_35 {
+	width: 35%;
+}
+.thread_22  {
+	width: 32%;
+}
+.thread_bar {
+	width: 100%;
+}
+.thread_third {
+	 width: 33%;
+}
+.forum_75 {
+	 width: 75%;
+}
+.forum_25 {
+	 valign: top;
+	 width: 25%;
+}

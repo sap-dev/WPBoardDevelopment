@@ -24,28 +24,6 @@
 	$error = '';
 	$is_online = ($row['user_lastvisit'] > time() - 300);
 
-	if ($row['user_ban']) {
-		$res2 = $db->query('
-			SELECT ban_id, ban_time, ban_reason
-			FROM ' . BANLIST_TABLE . '
-			WHERE user_id = ' . $row['user_id']
-		);
-
-		$row2 = $db->fetch_array($res2);
-
-		if ($row2['ban_time'] < time() || !$row2) {
-			$db->query('
-				UPDATE ' . USERS_TABLE . '
-				SET user_ban = 0
-				WHERE user_id = ' . $row['user_id']
-			);
-			
-			header("Location: ".$_SERVER['PHP_SELF'].'?id='.$row['user_id']);
-		}
-		
-		$db->free_result($res2);
-	}
-
 	if ($is_online) {
 		$online_time = (floor((time() - $row['user_login']) / 60));
 	 } else if(empty($row['user_login'])) {

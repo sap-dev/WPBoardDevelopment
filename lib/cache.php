@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.cache
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Cache
+		* @file cache.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	class cache {
 		function delete($name) {
@@ -65,7 +66,7 @@
 				break;
 
 				case 'smilies':
-				case 'smilies_group':
+				
 
 					$res = $db->query('
 						SELECT smilie_emotion, smilie_image
