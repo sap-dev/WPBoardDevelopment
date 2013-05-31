@@ -1168,6 +1168,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', end
 	border-radius: 10px;
 }
 
+#lastposter {
+	background: #EEEEEE;
+	padding: 6px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+
 img {
 border: 0;
 }
@@ -1392,6 +1401,11 @@ left:0; }
 .thread_35 {
 	width: 35%;
 }
+
+#profile {
+		margin-top: -40px;
+	}
+	
 .thread_22  {
 	width: 32%;
 }
@@ -1405,6 +1419,6 @@ left:0; }
 	 width: 75%;
 }
 .forum_25 {
-	 valign: top;
+	 vertical-align: top;
 	 width: 25%;
 }

@@ -34,7 +34,7 @@
 				<br />
 				<br />
 
-				<a href="#" onclick="this.firstChild.src = 'lib/captcha.php?' + new Date().getTime();return false;"><img style="padding:4px 0;" border="0" id="captcha" src="lib/captcha.php" /></a><br />
+				<a href="#" onclick="this.firstChild.src = 'lib/captcha.php?' + new Date().getTime();return false;"><img style="padding:4px 0;" id="captcha" src="lib/captcha.php" alt="Captcha" /></a><br />
 				<input name="captcha" type="text" />
 			<?php endif; ?>
 		</div>
