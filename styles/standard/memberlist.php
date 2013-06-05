@@ -1,7 +1,7 @@
 <?php template::display('header'); ?>
 <table class="forum_table"><tr>
 <td class="forum_25">
-	<h2>Mitglieder</h2>
+	<h2><?=template::getLanguage($config['selected_language'],'user');?></h2>
 	<div class="sections">
 		<ul>
 			<li><a href="memberlist.php" <?php if (!template::getVar('MODE')): ?>class="active"<?php endif; ?>><img src="images/user.png" style="vertical-align: middle;" alt="WPBoard-Image" />Mitglieder</a></li>
@@ -15,9 +15,9 @@
 	<br />
 	<div class="tabs noJS">
 		<ul>
-				<li><a href="memberlist.php?mode=team" <?php if (!template::getVar('CHAR')): ?>class="active"<?php endif; ?>>Alle</a></li>
-				<li><a href="memberlist.php?mode=team&amp;q=14" <?php if (template::getVar('CHAR') == '14'): ?>class="active"<?php endif; ?>>Administrator</a></li>
-				<li><a href="memberlist.php?mode=team&amp;q=15" <?php if (template::getVar('CHAR') == '15'): ?>class="active"<?php endif; ?>>Moderator</a></li>
+				<li><a href="memberlist.php?mode=team" <?php if (!template::getVar('CHAR')): ?>class="active"<?php endif; ?>><?=template::getLanguage($config['selected_language'],'all');?></a></li>
+				<li><a href="memberlist.php?mode=team&amp;q=14" <?php if (template::getVar('CHAR') == '14'): ?>class="active"<?php endif; ?>><?=template::getLanguage($config['selected_language'],'admin');?></a></li>
+				<li><a href="memberlist.php?mode=team&amp;q=15" <?php if (template::getVar('CHAR') == '15'): ?>class="active"<?php endif; ?>><?=template::getLanguage($config['selected_language'],'mod');?></a></li>
 		</ul>
 
 		<div class="content">

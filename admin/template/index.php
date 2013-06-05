@@ -50,7 +50,7 @@
 
 	<tr>
 		<td colspan="4" style="border-right: 0;">
-			Das neueste Mitglied ist <b><a class="<?=template::getVar('NEWEST_USER_LEVEL'); ?>" href="../user.php?id=<?=template::getVar('NEWEST_USER_ID'); ?>"><?=template::getVar('NEWEST_USERNAME'); ?></a></b>. Du verwendest Itschi <?=template::getVar('VERSION'); ?>.
+			Das neueste Mitglied ist <b><a class="<?=template::getVar('NEWEST_USER_LEVEL'); ?>" href="../user.php?id=<?=template::getVar('NEWEST_USER_ID'); ?>"><?=template::getVar('NEWEST_USERNAME'); ?></a></b>. WPBoard <?=template::getVar('VERSION'); ?>.
 		</td>
 	</tr>
 </table>

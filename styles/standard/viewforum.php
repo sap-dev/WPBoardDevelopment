@@ -8,11 +8,11 @@
 	&nbsp;
 
 	<?php if (template::getVar('FORUM_CLOSED')): ?>
-		Geschlossen
+		Closed
 	<?php elseif  (template::getVar('IS_NEWS') && !template::getVar('IS_MOD')): ?>
 		
 	<?php else: ?>
-		<a href="newtopic.php?id=<?=template::getVar('FORUM_ID'); ?>" class="button">Neues Thema</a>
+		<a href="newtopic.php?id=<?=template::getVar('FORUM_ID'); ?>" class="button"><?=template::getLanguage($config['selected_language'],'new_topic');?></a>
 	<?php endif; ?>
 </div>
 
@@ -145,11 +145,11 @@
 
 							<? if($topic['LABEL_EXIST']): ?><?=$topic['LABEL'];?>&nbsp;<? endif; ?> <a class="forum" href="viewtopic.php?id=<?=$topic['ID']; ?>"><?=$topic['TITLE']; ?></a>
 
-							von
+							<?=template::getLanguage($config['selected_language'],'from');?>
 							<?php if ($topic['USER_ID']): ?>
 								<a class="<?=$topic['USER_LEGEND']; ?>" href="user.php?id=<?=$topic['USER_ID']; ?>"><?=$topic['USERNAME']; ?></a>
 							<?php else: ?>
-								<span>Unbekannt</span>
+								<span><?=template::getLanguage($config['selected_language'],'unnown');?></span>
 							<?php endif; ?>
 							<?=$topic['PAGES']; ?>
 							<?php if($topic['ATTACH']): ?>
@@ -157,7 +157,7 @@
 							<? endif; ?>
 							<br />
 							<span>
-								<small class="grey">vor <?=$topic['TIME']; ?></small>
+								<small class="grey"><?=template::getLanguage($config['selected_language'],'at');?> <?=$topic['TIME']; ?></small>
 							</span>
 						</td>
 						<td class="thread_200">
@@ -168,12 +168,12 @@
 
 						<td class="thread_10">
 							<b style="font-size: 16px;"><?=$topic['POSTS']; ?></b><br />
-							<small class="grey">Beitr<?php if ($topic['POSTS'] == 1): ?>ag<?php else: ?>äge<?php endif; ?></small>
+							<small class="grey"><?php if ($topic['POSTS'] == 1): ?><?=template::getLanguage($config['selected_language'],'post');?><?php else: ?><?=template::getLanguage($config['selected_language'],'posts');?><?php endif; ?></small>
 						</td>
 
 						<td class="thread_10">
 							<b style="font-size: 16px;"><?=$topic['VIEWS']; ?></b><br />
-							<small class="grey">Besuch<?php if ($topic['VIEWS'] == 1): ?><?php else: ?>er<?php endif; ?></small>
+							<small class="grey"><?=template::getLanguage($config['selected_language'],'visitors');?></small>
 						</td>
 
 						<td class="thread-22">
@@ -182,18 +182,18 @@
 								<img alt="WPBoard-Image" src="./images/avatar/<?php if ($topic['LAST_POST_USER_AVATAR']): ?><?=$topic['LAST_POST_USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>" height="36" width="36" />
 							</div>
 							<div style="float: right; width: 75%;">
-							von
+							<?=template::getLanguage($config['selected_language'],'from');?>
 							<?php if ($topic['LAST_POST_USER_ID']): ?>
 								<a class="<?=$topic['LAST_POST_USER_LEGEND']; ?>" href="user.php?id=<?=$topic['LAST_POST_USER_ID']; ?>"><?=$topic['LAST_POST_USERNAME']; ?></a>
 							<?php else: ?>
-								<span>Unbekannt</span>
+								<span><?=template::getLanguage($config['selected_language'],'unknown');?></span>
 							<?php endif; ?>&nbsp;
 
 							<a href="viewtopic.php?id=<?=$topic['ID']; ?>&amp;p=<?=$topic['LAST_POST_ID']; ?>#<?=$topic['LAST_POST_ID']; ?>">
 								<img src="./styles/standard/images/neubeitrag.gif" title="Letzter Beitrag" alt="WPBoard-Image" />
 							</a><br />
 
-							<span><small class="grey">vor <?=$topic['LAST_POST_TIME']; ?></small></span>
+							<span><small class="grey"><?=template::getLanguage($config['selected_language'],'at');?> <?=$topic['LAST_POST_TIME']; ?></small></span>
 							</div>
 </div>
 	
@@ -206,7 +206,7 @@
 		} else {
 	?>
 
-		<div class="info">In diesem Forum existieren (noch) keine Themen.</div>
+		<div class="info"><?=template::getLanguage($config['selected_language'],'no_topics_in_forum');?></div>
 
 	<?php
 		}
@@ -224,11 +224,11 @@
 								<form action="viewforum.php" method="GET">
 									<input type="hidden" name="id" value="<?=template::getVar('FORUM_ID'); ?>">
 									<select name="order" style="font-size: 10px;">
-										<option value="">Datum</option>
-										<option value="label">Makierung</option>
-										<option value="view">Aufrufen</option>
+										<option value=""><?=template::getLanguage($config['selected_language'],'date');?></option>
+										<option value="label"><?=template::getLanguage($config['selected_language'],'label');?></option>
+										<option value="view"><?=template::getLanguage($config['selected_language'],'visitors');?></option>
 									</select>
-									<input type="submit" value="Sortieren">
+									<input type="submit" value="<?=template::getLanguage($config['selected_language'],'order');?>">
 								</form>							
 							</div>
 						</div>
@@ -250,11 +250,11 @@
 	&nbsp;
 	
 	<?php if (template::getVar('FORUM_CLOSED')): ?>
-		Geschlossen
+		<?=template::getLanguage($config['selected_language'],'closed');?>
 	<?php elseif  (template::getVar('IS_NEWS') && !template::getVar('IS_MOD')): ?>
 		
 	<?php else: ?>
-		<a href="newtopic.php?id=<?=template::getVar('FORUM_ID'); ?>" class="button">Neues Thema</a>
+		<a href="newtopic.php?id=<?=template::getVar('FORUM_ID'); ?>" class="button"><?=template::getLanguage($config['selected_language'],'new_topic');?></a>
 	<?php endif; ?>
 </div>
 </td></tr></table>

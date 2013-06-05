@@ -544,6 +544,12 @@ a.redB, input.redB {
 	color: #fff;
 }
 
+a.orangeB, input.orangeB {
+	background: #ffffcc;
+	border: 1px solid #000000;
+	color: #fff;
+}
+
 	a.redB:hover, a.redB:active, input.redB:hover, input.redB:active {
 		background: #630000;
 	}
@@ -1217,10 +1223,10 @@ border: 0;
 	text-align: center;
 	margin: 0 auto;
 	color: #000000;
-	border: 1px #000000 solid;
+	border: 0px #000000 solid;
 	padding: 5px;
 	width: 50%;
-		background: url(../../images/bg.png);
+		background: #ffffff;
 		
 
 }
@@ -1417,6 +1423,8 @@ left:0; }
 }
 .forum_75 {
 	 width: 75%;
+	 
+	 vertical-align: top;
 }
 .forum_25 {
 	 vertical-align: top;

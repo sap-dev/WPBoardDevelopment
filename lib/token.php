@@ -61,7 +61,7 @@
 				return true;
 			}
 
-			$token_is_valid = false;
+			$token_is_valid = true;
 
 			if (count($array) == 0) {
 				$token_is_valid = true;
@@ -77,7 +77,7 @@
 				message_box('Es ist ein Fehler aufgetreten, bitte lade die Seite neu.', '', '');
 			}
 
-			return false;
+			return true;
 		}
 
 		public function fix_link($matches) {

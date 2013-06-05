@@ -1,14 +1,16 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.ACP.plugins
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file plugins.php
 	*/
+	
 	require '../base.php';
 	require_once '../lib/plugins/plugin.server.php';
 
-	use \Itschi\lib as lib;
+	use \WPBoard\lib as lib;
 
 	if ($user->row['user_level'] != ADMIN) {
 		message_box('Keine Berechtigung!', '../', 'zurück');
@@ -16,21 +18,16 @@
 	}
 
 	$plugins = new lib\plugins();
-
-	#region Options
-
-	/**
-	 * get admin.php of plugin folder
-	 */
 	
+	/**
+	 * manage a plugin
+	 */
 	if(isset($_GET['manage'])) {
 		template::display('header');
 		include('../plugins/'.$_GET['plugin'].'/files/admin.php');
 		template::display('footer');
 		die();
 	}
-
-	
 
 	/**
 	 * remove a plugin-server
@@ -75,7 +72,6 @@
 
 	if (isset($_GET['install'])) {
 		$id = (int)$_GET['install'];
-
 		$plugins->install($id);
 	}
 
@@ -85,7 +81,6 @@
 
 	if (isset($_GET['uninstall'])) {
 		$id = (int)$_GET['uninstall'];
-
 		$plugins->uninstall($id);
 	}
 
@@ -114,10 +109,6 @@
 		$server_data = @json_decode(@file_get_contents($server_url));
 
 		$plugin_mess = '';
-
-		/*
-		 *		TODO: Code aufräumen und auf sicherheit prüfen!
-		 */
 
 		if (isset($_GET['download'])) {
 			$URL = explode('/', str_replace('http://', '', $row->server_url));
@@ -154,11 +145,10 @@
 							return 'Konnte ZIP Datei nicht öffnen';
 						}
 
-						$zip->extractTo('../plugins/'.$_GET['download'].'/'); // ziemlich unsicher und kacke, aber vorerst OK
+						$zip->extractTo('../plugins/'.$_GET['download'].'/');
 						$zip->close();
 
 						$plugins->syncLocal();
-
 						@unlink($pluginFile);
 
 						return 'Plugin “'.htmlspecialchars($_GET['download']).'” wurde heruntergeladen';
@@ -182,7 +172,6 @@
 					FROM ' . PLUGINS_TABLE . '
 					WHERE `package` = \'' . $db->chars($data->package) . '\'');
 
-				// never trust user data
 				template::assignBlock('plugins', array(
 					'NAME'			=>	htmlspecialchars($data->name),
 					'VERSION'		=>	htmlspecialchars($data->version),
@@ -205,10 +194,8 @@
 		));
 
 		template::display('plugin-list');
-		exit; // exit da hier ein anderes template angezeigt wird
+		exit;
 	}
-
-	#endregion Options
 
 	$plugins->syncLocal();
 
@@ -374,22 +361,41 @@
 			}
 		}
 
-		// assign
+		
+		$res2 = $db->query('
+			SELECT *
+			FROM ' . SERVER_TABLE . ''
+		);
+		while ($row2 = $db->fetch_object($res2)) {
+			$server_url2 = lib\pluginServer::getPluginListURL($row2->server_url);
+			$server_data2 = @json_decode(@file_get_contents($server_url2));
+			foreach ($server_data2 as $data2) {
+				if($package == $data2->package) {
+					if($version < $data2->version) {
+						$list = $row2->server_id;
+						$package = $data2->package;
+						$dlurl = "plugins.php?list=$list&download=$package";
+						$updateAvaitable = '1';
+					}
+				}
+			}
+		}
+		
 		template::assignBlock(($row->installed) ? 'plugins' : 'available', array(
-			'NAME'			=>	htmlspecialchars($title),
-			'PACKAGE'		=>	htmlspecialchars($package),
-			'COMPATIBLE'	=>	$compatible,
-			'VERSION'		=>	$version,
-			'PERMISSIONS'	=>	$pL,
-			'DEPENDENCIES'	=>	$dependencies,
+			'NAME'					=>	htmlspecialchars($title),
+			'PACKAGE'				=>	htmlspecialchars($package),
+			'COMPATIBLE'			=>	$compatible,
+			'UPDATE'				=>	$updateAvaitable,
+			'DLURL'					=>	$dlurl,
+			'VERSION'				=>	$version,
+			'PERMISSIONS'			=>	$pL,
+			'DEPENDENCIES'			=>	$dependencies,
 			'MISSING_DEPENDENCY'	=>	in_array(0, $dependencies),
-			'ID'			=>	$row->id,
-			'MINVERSION'	=>	($minVersion) ? htmlspecialchars($row->minVersion) : '-',
-			'MAXVERSION'	=>	($maxVersion) ? htmlspecialchars($row->maxVersion) : '-'
+			'ID'					=>	$row->id,
+			'MINVERSION'			=>	($minVersion) ? htmlspecialchars($row->minVersion) : '-',
+			'MAXVERSION'			=>	($maxVersion) ? htmlspecialchars($row->maxVersion) : '-',
 		));
 
-
-		// count
 		if ($row->installed) {
 			$installed++;
 		} else {
@@ -399,7 +405,8 @@
 
 	template::assign(array(
 		'AVAILABLE'	=>	$available > 0,
-		'INSTALLED'	=>	$installed > 0
+		'INSTALLED'	=>	$installed > 0,
+		'pluginServer'	=>	$_GET['pluginServer']
 	));
 
 	template::display('plugins');

@@ -29,7 +29,7 @@
 						<td style="padding: 0px;" width="25%"><a href="?menu=1" style="color: #000000;"><div class="acp_menu_item<? if(template::getVar('menu')=="1") { ?>_activ<? } ?>"><img src="http://cdn4.iconfinder.com/data/icons/pc_de_hamburg_icon_pack/32x32/config.png"><br>Einstellungen</div></a></td>
 						<td style="padding: 0px;" width="25%"><a href="?menu=2" style="color: #000000;"><div class="acp_menu_item<? if(template::getVar('menu')=="2") { ?>_activ<? } ?>"><img src="http://cdn3.iconfinder.com/data/icons/fatcow/32x32_0460/group.png"><br>Benutzer</div></a></td>
 						<td style="padding: 0px;" width="25%"><a href="?menu=3" style="color: #000000;"><div class="acp_menu_item<? if(template::getVar('menu')=="3") { ?>_activ<? } ?>"><img src="http://cdn4.iconfinder.com/data/icons/Hypic_Icon_Pack_by_shlyapnikova/32/forum_32.png"><br>Forum</div></a></td>
-						<td style="padding: 0px;" width="25%"><a href="?menu=4" style="color: #000000;"><div class="acp_menu_item<? if(template::getVar('menu')=="4") { ?>_activ<? } ?>"><img src="http://cdn4.iconfinder.com/data/icons/Hypic_Icon_Pack_by_shlyapnikova/32/plugin_32.png"><br>Plugins</div></a></td>
+						<td style="padding: 0px;" width="25%"><a href="?menu=4" style="color: #000000;"><div class="acp_menu_item<? if(template::getVar('menu')=="4") { ?>_activ<? } ?>"><img src="http://cdn4.iconfinder.com/data/icons/Hypic_Icon_Pack_by_shlyapnikova/32/plugin_32.png"><br>Pakete</div></a></td>
 					</tr>
 					</table>
 				</td>
@@ -47,7 +47,6 @@
 							<li><a href="index.php"<?php if (template::getVar('PAGE') == 'index'): ?>class="active"<?php endif; ?>>Startseite</a></li>
 						<? if(template::getVar('menu')=="1") { ?>
 							<li><a href="settings.php?menu=1"<?php if (template::getVar('PAGE') == 'settings'): ?>class="active"<?php endif; ?>>Einstellungen</a></li>
-							<li><a href="news.php?menu=1"<?php if (template::getVar('PAGE') == 'news'): ?>class="active"<?php endif; ?>>News</a></li>
 							<li><a href="bots.php?menu=1"<?php if (template::getVar('PAGE') == 'bots' ||template::getVar('PAGE') == 'bot-new'): ?>class="active"<?php endif; ?>>Bots</a></li>
 							<li><a href="smilies.php?menu=1"<?php if (template::getVar('PAGE') == 'smilies' ||template::getVar('PAGE') == 'smilie-new'): ?>class="active"<?php endif; ?>>Smilies</a></li>
 							<li><a href="menu.php?menu=1"<?php if (template::getVar('PAGE') == 'menu' ||template::getVar('PAGE') == 'menu-new'): ?>class="active"<?php endif; ?>>Men&uuml;punkte</a></li>
@@ -63,7 +62,8 @@
 							<li><a href="groups.php?menu=3"<?php if (template::getVar('PAGE') == 'groups' ||template::getVar('PAGE') == 'group-new'): ?>class="active"<?php endif; ?>>Gruppen</a></li>
 						<? } if(template::getVar('menu')=="4") { ?>
 							<li><a href="styles.php?menu=4"<?php if (template::getVar('PAGE') == 'styles'): ?>class="active"<?php endif; ?>>Styles</a></li>
-							<li><a href="plugins.php?menu=4"<?php if (template::getVar('PAGE') == 'plugins'||template::getVar('PAGE') == 'server-new'): ?>class="active"<?php endif; ?>>Plugins</a></li>
+							<li><a href="plugins.php?menu=4"<?php if (template::getVar('PAGE') == 'plugins'): ?>class="active"<?php endif; ?>>Pakete</a></li>
+							<li><a href="plugins.php?pluginServer=1&menu=4"<?php if (template::getVar('PAGE') == 'server-new'): ?>class="active"<?php endif; ?>>Paket-Server</a></li>
 						<? } ?>
 						</ul>
 

@@ -62,10 +62,10 @@
 						<td class="forum_lastpost">
 							<?php if ($forum['LAST_POST_ID']): ?>
 							<div class="lastposter" style="height: 37px;">
-							<div style="float: left; width: 15%; text-align: center;">
+							<div style="float: left; width: 20%; text-align: center;">
 								<img alt="WPBoard-Image" src="./images/avatar/<?php if ($forum['LAST_POST_USER_ID']): ?><?=$forum['USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>" height="36" width="36" />
 							</div>
-							<div style="float: right; width: 85%;">
+							<div style="float: right; width: 80%; ">
 							<a class="forum" href="viewtopic.php?id=<?=$forum['LAST_POST_TOPIC_ID'];?>"><?=$forum['LAST_POST_TOPIC_TITLE'];?></a><? if($forum['LABEL_EXIST']): ?>&nbsp;<?=$forum['LABEL'];?><? endif; ?><br />
 								<small class="grey">								
 								<?php if ($forum['LAST_POST_USER_ID']): ?>

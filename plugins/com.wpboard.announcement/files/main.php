@@ -5,6 +5,6 @@
 		$sql =  plugin::SQL()->query("SELECT * FROM ".PREFIX."plugin_announcement WHERE id = '1'");
 		$row = plugin::SQL()->fetch_array($sql);
 		/** insert new contents in template **/
-    		plugin::TPL()->addToArea('aboveContent', '<div class="info">'.$row['text'].'</div>');
+    		plugin::TPL()->addToArea('aboveContent', '<div class="info">- '.$row['text'].'</div>');
    	}
 ?>

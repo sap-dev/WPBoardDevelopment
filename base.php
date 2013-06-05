@@ -89,12 +89,26 @@
 	$token->_('plugin.php', 'GET', USER);
 	$token->_('newpost.php', 'GET', USER);
 	$token->_('plugins.php', 'GET', USER);
+	$token->_('admin/settings.php', 'GET', USER);
 	
 
 	$token->check('POST', $_POST);
 	$token->check('GET', $_GET);
 
-	template::assign("menu",$_GET['menu']);
+	if($_SESSION['admin_menu']=="") {
+		if($_GET['menu']) {
+			$_SESSION['admin_menu'] = $_GET['menu'];
+		} else {
+			$_SESSION['admin_menu'] = '1';
+		}
+	} else {
+		if($_GET['menu']) {
+			$_SESSION['admin_menu'] = $_GET['menu'];
+		} else {
+			$_SESSION['admin_menu'] = $_SESSION['admin_menu'];
+		}
+	}
+	template::assign("menu",$_SESSION['admin_menu']);
 	
 	if($user->row['user_lang'] AND $_GET['lang']) {
 		$config['selected_language'] = $_GET['lang'];

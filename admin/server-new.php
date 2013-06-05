@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.ACP.server.new
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.plugin
+		* @category Plugin
+		* @file server-new.php
 	*/
 
 	require '../base.php';
@@ -38,9 +39,7 @@
 				");
 			}
 
-			//$cache->delete('bots');//TODO
-
-			header('Location: plugins.php');
+			header('Location: plugins.php?pluginServer=1&menu='.$_GET['menu'].'');
 		}
 	} else if ($id) {
 		$res = $db->query('

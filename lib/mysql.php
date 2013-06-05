@@ -30,6 +30,7 @@
 
 					<div class="error MySQL">
 						Es ist ein MySQL Fehler aufgetreten - der Administrator wurden informiert! Bitte versuchen Sie es nocheinmal
+						
 					</div>
 				</div>
 			');

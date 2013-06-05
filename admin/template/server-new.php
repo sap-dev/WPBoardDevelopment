@@ -7,9 +7,9 @@
 <form action="server-new.php?id=<?=template::getVar('ID'); ?>&menu=<?=template::getVar("menu");?>" method="post">
 	<div class="h2box noBottom">
 		<?php if (template::getVar('ID') == 0): ?>
-			<h1>Neuer Plugin-Server</h1>
+			<h1>Neuer Paket-Server</h1>
 		<?php else: ?>
-			<h1>Plugin-Server bearbeiten</h1>
+			<h1>Paket-Server bearbeiten</h1>
 		<?php endif; ?>
 	</div>
 

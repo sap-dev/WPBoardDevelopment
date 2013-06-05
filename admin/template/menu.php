@@ -24,7 +24,7 @@
 	?>
 
 				<tr>
-					<td><b><img src="<?=$menu['ICON']; ?>" width="16" height="16"></b></td>
+					<td><b><img src="../<?=$menu['ICON']; ?>" width="16" height="16"></b></td>
 					<td><?=$menu['NAME']; ?></td>
 					<td><?=$menu['LINK']; ?>.php</td>
 					<td align="right">

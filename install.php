@@ -782,8 +782,8 @@
 							
 	';
 
-	define('STATUS_OK', '<span style="color: green;">&#10003;</span>');
-	define('STATUS_ERROR', '<b style="color: red;">&#9587;</b>');
+	define('STATUS_OK', '<img src=images/ok.png>');
+	define('STATUS_ERROR', '<img src=images/deleteS.png>');
 
 	$error = 0;
 
@@ -1121,6 +1121,9 @@
 
 	echo '
 						</div>
+					</div>
+					<div style="text-align: center;">
+						<a style="color: #000000; text-decoration: none; font-size: 12px;" href="http://www.wpboard.de"><strong>WebPowerBoard® '.VERSION.'</strong>, entwickelt from <strong>WPDevelopment</strong></a>
 					</div>
 				</div>
 			</body>

@@ -10,10 +10,10 @@
 
 <div class="fRight" style="width: 39%; text-align: right; padding-top: 2.5px; padding-bottom: 25px;">
 	<?php if (template::getVar('FORUM_CLOSED') || template::getVar('TOPIC_CLOSED')): ?>
-		Geschlossen
+		<?=template::getLanguage($config['selected_language'],'closed');?>
 	<?php else: ?>
-		<a href="newpost.php?id=<?=template::getVar('TOPIC_ID'); ?>" class="button">Beitrag schreiben</a>
-	<?php endif; ?></b>
+		<a href="newpost.php?id=<?=template::getVar('TOPIC_ID'); ?>" class="button"><?=template::getLanguage($config['selected_language'],'write_post');?></a>
+	<?php endif; ?>
 </div>
 
 <div class="clear"></div>
@@ -21,35 +21,35 @@
 <div id="posts">
 	<?php foreach(template::$blocks['posts'] as $posts): ?>
 
-			<table width="100%" class="firstPost">
+			<table class="firstPost forum_table">
 				<tr>
-					<td width="25%" valign="top">
+					<td class="forum_25">
 					
-					<center>
+					<div style="text-align: center;">
 					<?php if ($posts['USER_ID']): ?>
-							<b><a style="font-size: 15px;" class="<?=$posts['USER_LEGEND']; ?>" href="user.php?id=<?=$posts['USER_ID']; ?>"><?=$posts['USERNAME']; ?></a> <?php if ($posts['IS_ONLINE'] == '1'): ?><img src="http://www.woltlab.com/forum/wcf/icon/onlineS.png" style="vertical-align: middle;"><?php else: ?><img src="http://www.woltlab.com/forum/wcf/icon/offlineS.png" style="vertical-align: middle;"><?php endif; ?></b><br />
+							<b><a style="font-size: 15px;" class="<?=$posts['USER_LEGEND']; ?>" href="user.php?id=<?=$posts['USER_ID']; ?>"><?=$posts['USERNAME']; ?></a> <?php if ($posts['IS_ONLINE'] == '1'): ?><img src="http://www.woltlab.com/forum/wcf/icon/onlineS.png" style="vertical-align: middle;" alt="WPBoard-Image" /><?php else: ?><img src="http://www.woltlab.com/forum/wcf/icon/offlineS.png" style="vertical-align: middle;" alt="WPBoard-Image" /><?php endif; ?></b><br />
 							<small style="color: #000000; font-size: 11px;">
 							<?php if ($posts['USER_LEGEND'] == 'admin'): ?><?php endif; ?><?=$posts['USER_RANK']; ?><?php if ($posts['USER_LEGEND'] == 'admin'): ?><?php endif; ?> <br />
 							</small>
 						<?php else: ?>
-							<b>Unbekannt</b>
+							<b><?=template::getLanguage($config['selected_language'],'unknown');?></b>
 						<?php endif; ?>
-					<img style="margin-top: 10px; padding: 10px;" src="./images/avatar/<?php if ($posts['USER_ID']): ?><?=$posts['USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>" border="0" height="100" width="100" />
+					<img style="margin-top: 10px; padding: 10px;" src="./images/avatar/<?php if ($posts['USER_ID']): ?><?=$posts['USER_AVATAR']; ?><?php else: ?><?=template::getVar('AVATAR'); ?><?php endif; ?>"  height="100" width="100" alt="WPBoard-Image" />
 						<br />
 						<small style="color: #000000; font-size: 11px;">
-						Beiträge: <?=$posts['USER_POSTS']; ?><br />
-						Registriert: <?=$posts['USER_REGISTER']; ?></small><br /><br />
-						<a href="mail.php?dir=1&mode=new&to=TO"><img src="http://www.woltlab.com/forum/wcf/icon/pmEmptyS.png" title="PN schreiben"></a>
-						<? if($posts['USER_WEBSITE']): ?><a href="<?=$posts['USER_WEBSITE'];?>"><img src="http://www.woltlab.com/forum/wcf/icon/websiteS.png"><? endif; ?>
-						<? if($posts['USER_ICQ']): ?><a href="http://www.icq.com/people/<?=$posts['USER_ICQ'];?>"><img src="http://www.woltlab.com/forum/wcf/icon/icqS.png"><? endif; ?>
-						<? if($posts['USER_SKYPE']): ?><a href="http://www.myskype.info/<?=$posts['USER_SKYPE'];?>/"><img src="http://www.woltlab.com/forum/wcf/icon/skypeS.png"><? endif; ?>
-						</center>
+						<?=template::getLanguage($config['selected_language'],'posts');?>: <?=$posts['USER_POSTS']; ?><br />
+						<?=template::getLanguage($config['selected_language'],'register_date');?>: <?=$posts['USER_REGISTER']; ?></small><br /><br />
+						<a href="mail.php?dir=1&amp;mode=new&amp;to=TO"><img src="images/pnS.png" title="PN schreiben" alt="WPBoard-Image" /></a>
+						<? if($posts['USER_WEBSITE']): ?><a href="<?=$posts['USER_WEBSITE'];?>"><img src="images/homeS.png" alt="WPBoard-Image" /></a><? endif; ?>
+						<? if($posts['USER_ICQ']): ?><a href="http://www.icq.com/people/<?=$posts['USER_ICQ'];?>"><img src="images/icqS.png" alt="WPBoard-Image" /></a><? endif; ?>
+						<? if($posts['USER_SKYPE']): ?><a href="http://www.myskype.info/<?=$posts['USER_SKYPE'];?>/"><img src="images/skypeS.png" alt="WPBoard-Image" /></a><? endif; ?>
+					</div>
 							
 					</td>
 
 					
 				
-					<td width="75%" valign="top">
+					<td class="forum_75">
 							<div style="word-wrap: break-word;">
 								<?php if (template::getVar('POLL_TITLE')): ?>
 									<div class="fRight" style="padding: 0 5px 5px 15px;width: 45%;">
@@ -137,26 +137,26 @@
 				<td></td>
 				<td>
 				<div style="position: relative; float: left;margin-left: 0px;">
-							<div id="lastposter" style="width: 150px; text-align: center;">vor <?=$posts['TIME'];?></div>
+							<div class="lastposter" style="width: 150px; text-align: center;"><?=template::getLanguage($config['selected_language'],'at');?> <?=$posts['TIME'];?></div>
 						</div>
 				<div style="position: relative; float: right;margin-right: 0px;">
-							<div id="lastposter" style="width: 18px; text-align: center;">#<?=$posts['POSTS_NUM'];?></div>
+							<div class="lastposter" style="width: 18px; text-align: center;">#<?=$posts['POSTS_NUM'];?></div>
 						</div>
-						<div style="position: relative; float: right; margin-right: 2px;"><div id="lastposter" style="width: 150px; text-align: center;">
-								<?php if ($user->row): ?>
+						<div style="position: relative; float: right; margin-right: 2px;"><?php if ($user->row): ?><div class="lastposter" style="width: 150px; text-align: center;">
+								
 							<?php if (template::getVar('IS_MOD')): ?>
-								<a href="movetopic.php?id=<?=template::getVar('TOPIC_ID'); ?>"><img src="http://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/move_16x16.gif" title="Verschieben"></a>
-								<a href="viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?>&important=1"><img src="http://cdn2.iconfinder.com/data/icons/fugue/icon/pin.png" title="<?php if (template::getVar('TOPIC_IMPORTANT')): ?>un<?php endif; ?>wichtig markieren"></a>
-								<a href="viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?>&close=1"><img src="http://cdn2.iconfinder.com/data/icons/Siena/16/lock%20yellow.png" title="<?php if (template::getVar('TOPIC_CLOSED')): ?>öffnen<?php else: ?>schlie&szlig;en<?php endif; ?>"></a>
+								<a href="movetopic.php?id=<?=template::getVar('TOPIC_ID'); ?>"><img src="images/moveS.gif" title="Verschieben" alt="WPBoard-Image" /></a>
+								<a href="viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?>&important=1"><img src="images/pinS.png" title="<?php if (template::getVar('TOPIC_IMPORTANT')): ?>un<?php endif; ?>wichtig markieren" alt="WPBoard-Image" /></a>
+								<a href="viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?>&close=1"><img src="images/lockS.png" title="<?=template::getLanguage($config['selected_language'],'close');?>" alt="WPBoard-Image" /></a>
 								
 							<?php endif; ?>
 	
 							<?php if ($posts['USER_ID'] == $user->row['user_id'] || template::getVar('IS_MOD')): ?>
-								<a href="<?php if ($posts['IS_TOPIC']): ?>newtopic.php?edit=1&id=<?=template::getVar('TOPIC_ID'); ?><?php else: ?>newpost.php?edit=1&id=<?=$posts['ID']; ?><?php endif; ?>"><img src="http://cdn2.iconfinder.com/data/icons/diagona/icon/16/018.png" title="Bearbeiten"></a>
-								<a href="<?php if ($posts['IS_TOPIC']): ?>viewforum.php?id=<?=template::getVar('FORUM_ID'); ?><?php else: ?>viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?><?php endif; ?>&delete=<?=$posts['ID']; ?>"><img src="http://cdn1.iconfinder.com/data/icons/CrystalClear/16x16/actions/button_cancel.png" title="Löschen"></a>
+								<a href="<?php if ($posts['IS_TOPIC']): ?>newtopic.php?edit=1&id=<?=template::getVar('TOPIC_ID'); ?><?php else: ?>newpost.php?edit=1&id=<?=$posts['ID']; ?><?php endif; ?>"><img src="images/editS.png" title="Bearbeiten" alt="WPBoard-Image" /></a>
+								<a href="<?php if ($posts['IS_TOPIC']): ?>viewforum.php?id=<?=template::getVar('FORUM_ID'); ?><?php else: ?>viewtopic.php?id=<?=template::getVar('TOPIC_ID'); ?><?php endif; ?>&delete=<?=$posts['ID']; ?>"><img src="images/deleteS.png" title="Löschen" alt="WPBoard-Image" /></a>
 							<?php endif; ?>
 
-							<a href="newpost.php?id=<?=template::getVar('TOPIC_ID'); ?>&quote=<?=$posts['ID']; ?>"><img src="http://cdn5.iconfinder.com/data/icons/fatcow/16x16/document_quote.png" title="Zitieren"></a>
+							<a href="newpost.php?id=<?=template::getVar('TOPIC_ID'); ?>&quote=<?=$posts['ID']; ?>"><img src="images/quoteS.png" title="Zitieren" alt="WPBoard-Image" /></a>
 							<?php endif; ?></div></div>
 				
 				</td>
@@ -169,8 +169,8 @@
 <?php endif; ?>
 <br />
 
-<div id="lastposter" style="width: 100%; padding: 10px;">
-<h3 onClick="$('#schnellantwort').slideToggle();"><img src="http://www.woltlab.com/forum/wcf/icon/messageQuickReplyM.png" style="vertical-align: middle;"> Antworten</h3>
+<div class="lastposter" style="width: 100%; padding: 10px;">
+<h3 onClick="$('#schnellantwort').slideToggle();"><img src="http://www.woltlab.com/forum/wcf/icon/messageQuickReplyM.png" style="vertical-align: middle;" alt="WPBoard-Image" /> <?=template::getLanguage($config['selected_language'],'answer');?></h3>
 	<div id="schnellantwort" style="display: none; padding-top: 7px;">
 	<? 
 	if($user->row) {
@@ -180,13 +180,15 @@
 			<div class="write"><center>
 				<textarea name="text" id="postContent" style="width: 95%;" rows="8" cols="40"><?=template::getVar('TEXT'); ?></textarea>
 			</div>
-		</div><center>
+		</div>
+		<div style="text-align: center;">
 			<input type="submit" name="submit" class="button" value="Absenden" />
+		</div>
 	</div>
 	<?
 	} else {
 	?>
-	<div class="info2">Sie müssen angemeldet sein, um auf ein Thema zu antworten</div>
+	<div class="info2"><?=template::getLanguage($config['selected_language'],'user_to_post');?></div>
 	<?
 	}
 	?>

@@ -102,6 +102,7 @@
 					$minVersion = $db->chars($json['minVersion']);
 					$maxVersion = $db->chars($json['maxVersion']);
 					$URL = $db->chars($json['URL']);
+					$version = $db->chars($json['version']);
 
 					$res = $db->query("
 						SELECT id
@@ -114,8 +115,8 @@
 					if (!isset($row->id)) {
 						$db->query("
 							INSERT INTO " . PLUGINS_TABLE . "
-							(title, package, permissions, dependencies, minVersion, maxVersion, URL, datum, installed)
-							VALUES ('".$name."', '".$package."', '".$permissions."', '".$dependencies."', '".$minVersion."', '".$maxVersion."', '".$URL."', '".time()."', '0')
+							(title, package, permissions, dependencies, minVersion, maxVersion, URL, datum, version, installed)
+							VALUES ('".$name."', '".$package."', '".$permissions."', '".$dependencies."', '".$minVersion."', '".$maxVersion."', '".$URL."', '".time()."', '".$version."','0')
 						");
 					} else {
 						$db->query("
@@ -126,7 +127,8 @@
 								`minVersion` =  '".$minVersion."',
 								`maxVersion` =  '".$maxVersion."',
 								`URL` =  '".$URL."',
-								`datum` =  '".time()."'
+								`datum` =  '".time()."',
+								`version` =  '".$version."'
 							WHERE `id` = " . $row->id
 						);
 					}
