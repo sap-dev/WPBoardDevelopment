@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.login
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file login.php
 	*/
 
 	require 'base.php';

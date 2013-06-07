@@ -97,6 +97,21 @@
 		template::display('message');
 		exit;
 	}
+	
+	function message_box_offline($message, $link, $link_text, $link2 = '', $link2_text = '', $refresh = false) {
+
+		template::assign(array(
+			'MESSAGE'	=>	$message,
+			'LINK'		=>	$link,
+			'LINK_TEXT'	=>	$link_text,
+			'LINK2'		=>	$link2,
+			'LINK2_TEXT'	=>	$link2_text,
+			'REFRESH'	=>	$refresh
+		));
+
+		template::display('message_offline');
+		exit;
+	}
 
 	function login_box() {
 

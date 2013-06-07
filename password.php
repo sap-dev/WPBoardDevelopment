@@ -1,12 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.passwordRecovery
-	* @since 2007/05/25
-	* 
-	* TODO: Sicherer machen
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file password.php
 	*/
+
 
 	require 'base.php';
 

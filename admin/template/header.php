@@ -20,7 +20,7 @@
 				<tr><td style="padding: 0px;">
 				<div class="logo">
 					<br />
-					<img src="http://creatr.cc/creatr/logo/Web%20Power%20Board.png?1368529574" alt="Logo" />
+					<img src="http://dev.wpboard.de/images/logo.png" alt="Logo" />
 				</div>
 				</td>
 				<td style="padding: 0px; text-align: right;">

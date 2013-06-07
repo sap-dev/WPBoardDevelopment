@@ -1,10 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.mail
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file mail.php
 	*/
+
 
 	require 'base.php';
 
@@ -59,20 +61,20 @@
 			}
 
 			template::assign(array(
-				'DIR'			=>	$dir,
-				'MAIL_USERNAME'		=>	$row['username'],
-				'MAIL_USER_ID'		=>	$row['user_id'],
-				'MAIL_USER_AVATAR'	=>	($row['user_avatar']) ? $row['user_avatar'] : $config['default_avatar'],
-				'MAIL_USER_POSTS'	=>	number_format($row['user_posts'], 0, '', '.'),
-				'MAIL_USER_RANK'	=>	$user->rank($row['user_id'], $row['user_rank'], $row['user_posts']),
+				'DIR'					=>	$dir,
+				'MAIL_USERNAME'			=>	$row['username'],
+				'MAIL_USER_ID'			=>	$row['user_id'],
+				'MAIL_USER_AVATAR'		=>	($row['user_avatar']) ? $row['user_avatar'] : $config['default_avatar'],
+				'MAIL_USER_POSTS'		=>	number_format($row['user_posts'], 0, '', '.'),
+				'MAIL_USER_RANK'		=>	$user->rank($row['user_id'], $row['user_rank'], $row['user_posts']),
 				'MAIL_USER_RANK_ICON'	=>	$user->rank_icon($row['user_id'], $row['user_rank'], $row['user_posts']),
-				'MAIL_USER_LEGEND'	=>	$user->legend($row['user_level']),
-				'MAIL_ID'		=>	$row['mail_id'],
-				'MAIL_TITLE'		=>	htmlspecialchars($row['mail_title']),
-				'MAIL_TIME'		=>	date('d.m.y H:i', $row['mail_time']),
-				'MAIL_TEXT'		=>	replace($row['mail_text'], $row['enable_bbcodes'], $row['enable_smilies'], $row['enable_urls']),
-				'SIGNATUR'		=>	($row['enable_signatur'] && $row['user_signatur']) ? replace($row['user_signatur'], $row['user_signatur_bbcodes'], $row['user_signatur_smilies'], $row['user_signatur_urls']) : false,
-				'DEFAULT_AVATAR'	=>	$config['default_avatar']
+				'MAIL_USER_LEGEND'		=>	$user->legend($row['user_level']),
+				'MAIL_ID'				=>	$row['mail_id'],
+				'MAIL_TITLE'			=>	htmlspecialchars($row['mail_title']),
+				'MAIL_TIME'				=>	date('d.m.y H:i', $row['mail_time']),
+				'MAIL_TEXT'				=>	replace($row['mail_text'], $row['enable_bbcodes'], $row['enable_smilies'], $row['enable_urls']),
+				'SIGNATUR'				=>	($row['enable_signatur'] && $row['user_signatur']) ? replace($row['user_signatur'], $row['user_signatur_bbcodes'], $row['user_signatur_smilies'], $row['user_signatur_urls']) : false,
+				'DEFAULT_AVATAR'		=>	$config['default_avatar']
 			));
 
 			template::display('mail_view');

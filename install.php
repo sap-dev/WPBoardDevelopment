@@ -287,39 +287,100 @@
 		mysql_unbuffered_query("
 			INSERT INTO `" . $prefix . "language` (`lang_id`, `lang_lang`, `lang_code`, `lang_translate`) VALUES
 			(1, 'de', 'threads', 'Themen'),
-			(2, 'de', 'thread', 'Thema'),
-			(3, 'de', 'forum', 'Forum'),
-			(4, 'de', 'post', 'Beitrag'),
-			(5, 'de', 'posts', 'Beiträge'),
-			(6, 'de', 'unknown', 'Unbekannt'),
-			(7, 'de', 'nopost', 'Kein Beitrag'),
-			(8, 'de', 'whoisonline', 'Wer ist online?'),
-			(9, 'de', 'admin', 'Administrator'),
-			(10, 'de', 'mod', 'Moderator'),
-			(11, 'de', 'bot', 'Bot'),
-			(12, 'de', 'legend', 'Legende'),
-			(13, 'de', 'user', 'Mitglieder'),
-			(14, 'de', 'nobody', 'Niemand'),
-			(15, 'de', 'stat', 'Statistik'),
-			(16, 'de', 'newest_member', 'Unser neustes Mitglied:'),
-			(17, 'de', 'clock', 'Uhr'),
-			(18, 'de', 'hello', 'Hallo'),
-			(19, 'de', 'config', 'Einstellungen'),
-			(20, 'de', 'logout', 'Logout'),
-			(21, 'de', 'register', 'Registrieren'),
-			(22, 'de', 'login', 'Login'),
-			(23, 'de', 'home', 'home :)'),
-			(24, 'de', 'only_admin', 'Forum ist nur für Administratoren sichtbar'),
-			(25, 'de', 'only_mod', 'Forum ist nur für Moderatoren sichtbar'),
-			(26, 'de', 'plugin_does_exists', 'Das von Ihnen gewählte Plugin ist nicht vorhanden - bitte wenden Sie sich an den Administrator.'),
-			(27, 'de', 'attachements_text', 'Folgende Dateien wurden angehangen:'),
-			(28, 'de', 'move', 'Verschieben'),
-			(29, 'de', 'important', 'wichtig makieren'),
-			(30, 'de', 'close', 'Schließen / Öffnen'),
-			(31, 'de', 'un', 'un'),
-			(32, 'de', 'thread_close', 'Thema schließen'),
-			(33, 'de', 'thread_open', 'Thema öffnen'),
-			(34, 'de', 'edit', 'Bearbeiten');
+					(2, 'de', 'thread', 'Thema'),
+					(3, 'de', 'forum', 'Forum'),
+					(4, 'de', 'post', 'Beitrag'),
+					(5, 'de', 'posts', 'Beiträge'),
+					(6, 'de', 'unknown', 'Unbekannt'),
+					(7, 'de', 'nopost', 'Kein Beitrag'),
+					(8, 'de', 'whoisonline', 'Wer ist online?'),
+					(9, 'de', 'admin', 'Administrator'),
+					(10, 'de', 'mod', 'Moderator'),
+					(11, 'de', 'bot', 'Bot'),
+					(12, 'de', 'legend', 'Legende'),
+					(13, 'de', 'user', 'Mitglieder'),
+					(14, 'de', 'nobody', 'Niemand'),
+					(15, 'de', 'stat', 'Statistik'),
+					(16, 'de', 'newest_member', 'Unser neustes Mitglied:'),
+					(17, 'de', 'clock', 'Uhr'),
+					(18, 'de', 'hello', 'Hallo'),
+					(19, 'de', 'config', 'Einstellungen'),
+					(20, 'de', 'logout', 'Logout'),
+					(21, 'de', 'register', 'Registrieren'),
+					(22, 'de', 'login', 'Login'),
+					(23, 'de', 'home', 'home :)'),
+					(24, 'de', 'only_admin', 'Forum ist nur für Administratoren sichtbar'),
+					(25, 'de', 'only_mod', 'Forum ist nur für Moderatoren sichtbar'),
+					(26, 'de', 'plugin_does_exists', 'Das von Ihnen gewählte Plugin ist nicht vorhanden - bitte wenden Sie sich an den Administrator.'),
+					(27, 'de', 'attachements_text', 'Folgende Dateien wurden angehangen:'),
+					(28, 'de', 'move', 'Verschieben'),
+					(29, 'de', 'important', 'wichtig makieren'),
+					(30, 'de', 'close', 'Schließen / Öffnen'),
+					(31, 'de', 'un', 'un'),
+					(32, 'de', 'thread_close', 'Thema schließen'),
+					(33, 'de', 'thread_open', 'Thema öffnen'),
+					(34, 'de', 'edit', 'Bearbeiten'),
+					(35, 'de', 'new_topic', 'Neues Thema'),
+					(36, 'de', 'at', 'vor'),
+					(37, 'de', 'from', 'von'),
+					(39, 'de', 'no_topics_in_forum', 'In diesem Forum existieren noch keine Themen'),
+					(40, 'de', 'visitors', 'Besucher'),
+					(41, 'de', 'date', 'Datum'),
+					(42, 'de', 'label', 'Makierung'),
+					(43, 'de', 'order', 'sortieren'),
+					(44, 'de', 'write_post', 'Neuer Beitrag'),
+					(45, 'de', 'register_date', 'Registriert'),
+					(46, 'de', 'user_to_post', 'Sie müssen angemeldet sein, um auf ein Thema zu antworten'),
+					(47, 'de', 'answer', 'Antworten'),
+					(48, 'de', 'all', 'Alle'),
+					(49, 'de', 'online', 'Online'),
+					(50, 'de', 'offline', 'Offline'),
+					(51, 'de', 'since', 'seid'),
+					(52, 'de', 'clock', 'Uhr'),
+					(53, 'de', 'minutes', 'Minuten'),
+					(54, 'de', 'last_online', 'Zuletzt online'),
+					(55, 'de', 'member_locked', 'Der Benutzer ist gesperrt'),
+					(56, 'de', 'no', 'Keine'),
+					(57, 'de', 'global_information', 'Allgemeine Informationen'),
+					(58, 'de', 'contact', 'Kontaktmöglichkeiten'),
+					(59, 'de', 'about_me', 'Über mich'),
+					(60, 'de', 'config', 'Einstellungen'),
+					(61, 'de', 'account', 'Account'),
+					(62, 'de', 'avatar', 'Avatar'),
+					(63, 'de', 'signatur', 'Signatur'),
+					(64, 'de', 'profil', 'Ihr Profil'),
+					(65, 'de', 'end_user', 'Account löschen'),
+					(66, 'de', 'homepage', 'Webseite'),
+					(67, 'de', 'options', 'Optionen'),
+					(68, 'de', 'smilies_out', 'Smilies ausschalten'),
+					(69, 'de', 'bbcodes_out', 'BBCodes ausschalten'),
+					(70, 'de', 'url_out', 'Urls nicht verlinken'),
+					(71, 'de', 'save', 'Speichern'),
+					(72, 'de', 'admin_not_delete', 'Gründer können ihr Konto aus Sicherheitsgründen nicht löschen.'),
+					(73, 'de', 'time_from_register', 'Mitgliedschaft besteht seit'),
+					(74, 'de', 'account_delete_sure', 'Meinen Account endgültig löschen'),
+					(75, 'de', 'add_new_avatar', 'Neuen Avatar hochladen'),
+					(76, 'de', 'avatar_delete', 'Avatar löschen'),
+					(77, 'de', 'upload', 'Hochladen'),
+					(78, 'de', 'description_allowed_avatar_files', '.jpg; .jpeg; .png; .gif'),
+					(79, 'de', 'edit_email', 'Emailadresse verändern'),
+					(80, 'de', 'old_email', 'Aktuelle Emailadresse'),
+					(81, 'de', 'new_email', 'Neue Emailadresse'),
+					(82, 'de', 'old_password', 'Aktuelles Passwort'),
+					(83, 'de', 'edit_password', 'Passwort ändern'),
+					(84, 'de', 'new_password', 'Neues Passwort'),
+					(85, 'de', 'account_delete_description', 'Dein kompletter Account wird gelöscht.\r\n						Beiträge im Forum werden nicht gelöscht.<br />\r\n						Achtung: Diese Aktion kann nicht rückgängig gemacht werden!\r\n						Gelöscht ist gelöscht!'),
+					(86, 'de', 'password_again', 'Passwort wiederholen'),
+					(87, 'de', 'skype', 'Skype'),
+					(88, 'de', 'icq', 'ICQ'),
+					(89, 'de', 'password_not_match', 'Die Passwörter sind nicht gleich.'),
+					(90, 'de', 'passwort_wrong', 'Das aktuelle Passwort ist nicht korrekt'),
+					(91, 'de', 'admin_delete_error', 'Gründer können das Konto nicht im Benutzerpanel löschen.'),
+					(92, 'de', 'email_wrong', 'Die Emailadresse ist nicht korrekt'),
+					(93, 'de', 'email_exist', 'Die Emailadresse ist bereits vorhanden'),
+					(94, 'de', 'password_6_lengh', 'Das Passwort muss mindestens 6 Zeichen lang sein'),
+					(95, 'de', 'file_not_allowed', 'Das Format ist nicht erlaubt'),
+					(96, 'de', 'develope_from', 'entwickelt von');
 			");
 
 		mysql_unbuffered_query("
@@ -450,7 +511,7 @@
 			  `topic_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 			  `forum_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 			  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-			  `post_text` text COLLATE utf8_unicode_ci DEFAULT '0',
+			  `post_text` text COLLATE utf8_unicode_ci,
 			  `enable_bbcodes` tinyint(1) unsigned NOT NULL DEFAULT '1',
 			  `enable_smilies` tinyint(1) unsigned NOT NULL DEFAULT '1',
 			  `enable_urls` tinyint(1) unsigned NOT NULL DEFAULT '1',
@@ -466,12 +527,17 @@
 			  KEY `forum_id` (`forum_id`),
 			  KEY `user_id` (`user_id`),
 			  KEY `topic_post_id` (`topic_id`,`post_id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-		");
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+		") OR die(mysql_error());
 
 		mysql_unbuffered_query("
 			INSERT INTO `" . $prefix . "posts` (`post_id`, `topic_id`, `forum_id`, `user_id`, `post_text`, `enable_bbcodes`, `enable_smilies`, `enable_urls`, `enable_signatur`, `is_topic`, `post_time`, `post_edit_user_id`, `post_edit_username`, `post_edit_user_level`, `post_edit_time`) VALUES
 			(1, 1, 2, 1, 'Die Installation war erfolgreich.\r\n\r\nVielen Dank für das Nutzen des WPBoards!', 1, 1, 1, 1, 1, " . time() . ", 0, '', 0, 0);
+		") OR die(mysql_error());
+		
+		mysql_unbuffered_query("
+			INSERT INTO `" . $prefix . "plugin_server` (`server_id`, `server_name`, `server_url`, `server_status`, `server_plugins`, `new_plugin`) VALUES
+			(1, 'WPBoard Updateserver', 'http://update.wpboard.de/', 0, 0, 0);
 		");
 
 		mysql_unbuffered_query("
@@ -1123,7 +1189,7 @@
 						</div>
 					</div>
 					<div style="text-align: center;">
-						<a style="color: #000000; text-decoration: none; font-size: 12px;" href="http://www.wpboard.de"><strong>WebPowerBoard® '.VERSION.'</strong>, entwickelt from <strong>WPDevelopment</strong></a>
+						<a style="color: #000000; text-decoration: none; font-size: 12px;" href="http://www.wpboard.de"><strong>Software: WebPowerBoard® '.VERSION.'</strong></a>
 					</div>
 				</div>
 			</body>

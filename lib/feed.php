@@ -1,12 +1,13 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.base.feed
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file feed.php
 	*/
 
-	namespace Itschi\lib;
+	namespace WPBoard\lib;
 
 	function feed($limit) {
 		global $db, $user, $tpl, $config, $phpdate;
@@ -34,18 +35,18 @@
 			$postTime = getTimeDifference($row['post_time'], time());
 			
 			\template::assignBlock('feed', array(
-				'AVATAR'	=>	($row['user_avatar']) ? $row['user_avatar'] : $config['default_avatar'],
-				'POST_ID'	=>	$row['post_id'],
-				'TOPIC_ID'	=>	$row['topic_id'],
-				'FORUM_NAME'	=>	$row['forum_name'],
-				'FORUM_ID'		=>	$row['forum_id'],
-				'USERNAME'	=>	$row['username'],
-				'USER_ID'	=>	$row['user_id'],
-				'USER_LEGEND'	=>	$user->legend($row['user_level']),
-				'TOPIC_TITLE'	=>	htmlspecialchars(substr($row['topic_title'], 0, 30)) . ((strlen($row['topic_title']) > 30) ? '...' : ''),
-				'POST_TEXT'	=>	replace(substr($row['post_text'], 0, 120), $row['enable_bbcodes'], $row['enable_smilies'], 1),
-				'POST_TIME'	=>	$postTime,
-				'MORE'		=>	(strlen($row['post_text']) > 120)
+				'AVATAR'			=>	($row['user_avatar']) ? $row['user_avatar'] : $config['default_avatar'],
+				'POST_ID'			=>	$row['post_id'],
+				'TOPIC_ID'			=>	$row['topic_id'],
+				'FORUM_NAME'		=>	$row['forum_name'],
+				'FORUM_ID'			=>	$row['forum_id'],
+				'USERNAME'			=>	$row['username'],
+				'USER_ID'			=>	$row['user_id'],
+				'USER_LEGEND'		=>	$user->legend($row['user_level']),
+				'TOPIC_TITLE'		=>	htmlspecialchars(substr($row['topic_title'], 0, 30)) . ((strlen($row['topic_title']) > 30) ? '...' : ''),
+				'POST_TEXT'			=>	replace(substr($row['post_text'], 0, 120), $row['enable_bbcodes'], $row['enable_smilies'], 1),
+				'POST_TIME'			=>	$postTime,
+				'MORE'				=>	(strlen($row['post_text']) > 120)
 			));
 
 			$i++;

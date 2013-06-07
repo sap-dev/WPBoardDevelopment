@@ -1,16 +1,14 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.register
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file register.php
 	*/
+
 
 	require 'base.php';
-
-	/**
-	* Session is required for the Captcha
-	*/
 	session_start();
 
 	if ($user->row) header("Location: ./index.php");

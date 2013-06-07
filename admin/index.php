@@ -1,7 +1,11 @@
 <?php
 	/**
-	 *	@package	com.Itschi.ACP.index
-	 */
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core.acp
+		* @category ACP
+		* @file index.php
+	*/
 
 	require '../base.php';
 
@@ -27,6 +31,30 @@
 		}
 	}
 
+	
+	/** Check Core Updates **/
+	$updatefile = file_get_contents('http://update.wpboard.de/version.txt');
+	if($_GET['update']=="1") {
+			if(!@copy('http://update.wpboard.de/latest.zip','../latest.zip')) {
+				$errors = error_get_last();
+				echo "COPY ERROR: ".$errors['type'];
+				echo "<br />\n".$errors['message'];
+			}		
+			$zip = new ZipArchive();
+			if ($zip->open('../latest.zip') !== true) {
+				@unlink($pluginFile);
+				return 'Konnte ZIP Datei nicht öffnen';
+			}
+			$zip->extractTo('../');
+			$zip->close();
+			include('../update.SQL.php');
+			message_box('Das Update wurde erfolgreich ausgeführt - bitte klicken Sie auf Weiter.', './index.php', 'Weiter');
+	}
+	if(VERSION != $updatefile) {
+		message_box('Es liegt ein neues Update auf '.$updatefile.' vor. Um das Update auszuführen, klicken Sie bitte auf Updaten..', './index.php?update=1', 'Updaten');
+	}
+			
+	
 	$sync = (isset($_GET['sync'])) ? $_GET['sync'] : -1;
 
 	function sync($id) {
@@ -210,6 +238,11 @@
 	} else {
 		sync($sync);
 	}
+	
+		sync(1);
+		sync(2);
+		sync(3);
+		sync(4);
 
 	if ($sync >= 0) {
 		$config = config_vars();

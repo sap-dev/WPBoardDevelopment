@@ -7,7 +7,7 @@
 		* @file constants.php
 	*/
 
-	define('VERSION', '1.0.0 Pre-Alpha 1');
+	define('VERSION', '1.0.0 Beta 1');
 
 	define('USER', 0);
 	define('MOD', 1);

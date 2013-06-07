@@ -61,7 +61,7 @@
 
 	if ($config['enable'] && $user->row['user_level'] != ADMIN && basename($_SERVER['PHP_SELF']) != 'login.php') {
 		$message = ($config['enable_text']) ? $config['enable_text'] : 'Das Forum wurde deaktiviert';
-		message_box($message, '', '');
+		message_box_offline($message, '', '');
 	}
 
 	$self = $_SERVER['PHP_SELF'];

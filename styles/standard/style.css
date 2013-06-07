@@ -118,11 +118,11 @@ a, a:hover, input, input:hover, input:focus, input:active, .tdMore, .tdMore:hove
 				}
 
 				#user_wrap ul li.login a {
-					background-image: url(./images/icons/key.png);
+					background-image: url(../../images/loginM.png);
 				}
 
 				#user_wrap ul li.register a {
-					background-image: url(./images/icons/lock.png);
+					background-image: url(../../images/registerM.png);
 				}
 
 				#user_wrap ul li a:hover, #user_wrap ul li a.active {
@@ -155,9 +155,9 @@ a, a:hover, input, input:hover, input:focus, input:active, .tdMore, .tdMore:hove
 			}
 			
 			.logo img {
-				  margin-top:-40px;
+				  margin-top:-50px;
 				  margin-left:-0px;
-				  margin-bottom: -40px;
+				  margin-bottom: -50px;
 			}
 
 #nav_wrap {
@@ -186,7 +186,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', end
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
 		border-bottom: 1px #000000 solid;
-			
+			margin-top: 30px;
 	
 	}
 

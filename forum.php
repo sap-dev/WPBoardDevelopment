@@ -1,16 +1,15 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.forum.index
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file forum.php
 	*/
 
 	require 'base.php';
 
 	if ($user->row && isset($_GET['mark'])) {
-		// include 'lib/functions/topic.php';
-
 		functions::topic()->mark_forum();
 	}
 

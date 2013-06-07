@@ -1,15 +1,17 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.ACP.styles
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.styles
+		* @category Styles
+		* @file styles.php
 	*/
+
 
 	require '../base.php';
 	require_once '../lib/styles.php';
 
-	use \Itschi\lib as lib;
+	use \WPBoard\lib as lib;
 
 	if ($user->row['user_level'] != ADMIN) {
 		message_box('Keine Berechtigung!', '../', 'zurück');

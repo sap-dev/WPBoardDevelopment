@@ -15,7 +15,7 @@
 	require 'base.php';
 	include 'lib/feed.php';
 
-	\Itschi\lib\feed(5);
+	\WPBoard\lib\feed(5);
 
 	
 

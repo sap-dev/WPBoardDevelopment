@@ -1,10 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.forum.newtopic
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file newtopic.php
 	*/
+
 
 	require 'base.php';
 

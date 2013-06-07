@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><?=template::getVar('TITLE_TAG'); ?><?=template::getVar('PAGE_TITLE'); ?></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="styles/standard/style.css" />
+		<link rel="stylesheet" href="js/dropdown/jquery.dropdown.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/dropdown/jquery.dropdown.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<script type="text/javascript">
+			token = '<?=$_SESSION['forum_token']; ?>';
+		</script>
+		
+		
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+				filter: none;
+				}
+			</style>
+		<![endif]-->
+
+		<?php if ($user->row) { ?>
+			<style>
+				#user_wrap ul li.user a {
+					background-repeat: no-repeat;
+					background-size: 25px;
+					background-position: 10px 7.5px;
+					padding-left: 45px;
+					background-image: url("./images/avatar/<?php if ($user->row['user_avatar']) { echo $user->row['user_avatar']; } else { ?><?=$config['default_avatar']; ?><?php } ?>");
+				}
+			</style>
+		<?php } ?>
+	</head>
+	<body>
+		<div id="user_wrap">
+			<ul class="user">
+				<?php if ($user->row) { ?>
+					<li class="user">
+						<a href="./user.php?id=<?=$user->row['user_id']; ?>" <?php if (template::getPage() == 'user' && $_GET['id'] == $user->row['user_id']): ?>class="active"<?php endif; ?>><?=template::getLanguage($config['selected_language'],'hello');?>, <b><?=$user->row['username']; ?></b>.</a>
+					</li>
+
+					<li class="settings">
+						<a href="./profile.php" <?php if (template::getPage() == 'profile'): ?>class="active"<?php endif; ?>> <?=template::getLanguage($config['selected_language'],'config');?></a>
+					</li>
+
+					<li class="mail">
+						<a href="./mail.php" <?php if (template::getPage() == 'mail'): ?>class="active"<?php endif; ?>>(<?=$user->row['user_mails']; ?>)</a>
+					</li>
+
+					<li class="logout">
+						<a href="./login.php?logout=1"><?=template::getLanguage($config['selected_language'],'logout');?></a>
+					</li>
+				<?php } else { ?>
+					<li class="register">
+						<a href="register.php"><?=template::getLanguage($config['selected_language'],'register');?></a>
+					</li>
+
+					<li class="login">
+						<a href="login.php"><?=template::getLanguage($config['selected_language'],'login');?></a>
+					</li>
+				<?php } ?>
+
+				
+			</ul>
+		</div>
+
+		
+		<section id="content">
+		<br /><br /><br /><br /><br /><br /><br />
+
+<?php if (template::getVar('REFRESH')): ?>
+	<meta http-equiv="refresh" content="<?=template::getVar('REFRESH'); ?>; URL=<?=template::getVar('LINK'); ?>"> 
+<?php endif; ?>
+
+
+<div class="info">
+	<?=template::getVar('MESSAGE'); ?>
+</div>
+
+<br />
+
+<b>
+	<a href="<?=template::getVar('LINK'); ?>">
+		<?=template::getVar('LINK_TEXT'); ?>
+	</a>
+</b>
+
+<?php if (template::getVar('LINK2')): ?>
+	|
+	<a href="<?=template::getVar('LINK2'); ?>">
+		<?=template::getVar('LINK2_TEXT'); ?>
+	</a>
+<?php endif; ?>
+
+<br /><br />
+
+<?php template::display('footer'); ?>

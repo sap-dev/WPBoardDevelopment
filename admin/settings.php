@@ -1,9 +1,10 @@
 <?php
 	/**
-	*
-	*	@package com.Itschi.ACP.settings
-	*	@since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core.acp
+		* @category ACP
+		* @file settings.php
 	*/
 
 	require '../base.php';

@@ -1,10 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.user
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file user.php
 	*/
+
 
 	require 'base.php';
 

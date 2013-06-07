@@ -1,10 +1,12 @@
 <?php
 	/**
-	*
-	* @package com.Itschi.movetopic
-	* @since 2007/05/25
-	*
+		* @author WPBoard
+		* @copyright 2013 WPBoard
+		* @package com.wpboard.core
+		* @category Core
+		* @file movetopic.php
 	*/
+
 
 	require 'base.php';
 
@@ -137,19 +139,19 @@
 
 	while ($row2 = $db->fetch_array($res2)) {
 		template::assignBlock('topics', array(
-			'ID'			=>	$row2['topic_id'],
-			'TIME'			=>	date('d.m.y H:i', $row2['topic_time']),
-			'TITLE'			=>	htmlspecialchars($row2['topic_title']),
-			'POSTS'			=>	number_format($row2['topic_posts'], 0, '', '.'),
-			'VIEWS'			=>	number_format($row2['topic_views'], 0, '', '.'),
-			'LAST_POST_ID'		=>	$row2['topic_last_post_id'],
-			'LAST_POST_TIME'	=>	date('d.m.y H:i', $row2['topic_last_post_time']),
+			'ID'					=>	$row2['topic_id'],
+			'TIME'					=>	date('d.m.y H:i', $row2['topic_time']),
+			'TITLE'					=>	htmlspecialchars($row2['topic_title']),
+			'POSTS'					=>	number_format($row2['topic_posts'], 0, '', '.'),
+			'VIEWS'					=>	number_format($row2['topic_views'], 0, '', '.'),
+			'LAST_POST_ID'			=>	$row2['topic_last_post_id'],
+			'LAST_POST_TIME'		=>	date('d.m.y H:i', $row2['topic_last_post_time']),
 			'LAST_POST_USERNAME'	=>	$row2['topic_last_post_username'],
-			'LAST_POST_USER_ID'	=>	$row2['topic_last_post_user_id'],
+			'LAST_POST_USER_ID'		=>	$row2['topic_last_post_user_id'],
 			'LAST_POST_USER_LEGEND'	=>	$user->legend($row2['topic_last_post_user_level']),
-			'USERNAME'		=>	$row2['username'],
-			'USER_ID'		=>	$row2['user_id'],
-			'USER_LEGEND'		=>	$user->legend($row2['user_level'])
+			'USERNAME'				=>	$row2['username'],
+			'USER_ID'				=>	$row2['user_id'],
+			'USER_LEGEND'			=>	$user->legend($row2['user_level'])
 		));
 	}
 
